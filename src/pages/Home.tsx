@@ -1,7 +1,8 @@
-import { useState, type SetStateAction } from "react";
+import { useEffect, useState, type SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { Textarea } from "../components/Textarea";
 import { Button } from "../components/Button";
+import { generateStudyContent } from "../services/gemini";
 
 export default function Home({
   setStudyData,
@@ -11,19 +12,36 @@ export default function Home({
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
-  function handleGenerate() {
-    // ⚠️ MOCK (substituir pela IA depois)
-    const mock = {
-      tema: "Sistema Solar",
-      resumo: ["O sistema solar possui 8 planetas"],
-      insights: ["A Terra é o único planeta com vida conhecida"],
-      dicas: ["Estude pelos planetas em ordem"],
-      flashcards: [],
-      exercicios: [],
-    };
+  useEffect(() => {
+    const hasData = localStorage.getItem("studyai_data") !== null;
+    if (hasData) {
+      navigate("/dashboard");
+    }
+  }, []);
 
-    setStudyData(mock);
-    navigate("/dashboard");
+  async function handleGenerate() {
+    if (!text) return;
+
+    try {
+      const data = await generateStudyContent(text);
+      console.log("Dados gerados:", data);
+      setStudyData(data);
+      navigate("/dashboard");
+    } catch (err) {
+      alert("Erro ao gerar conteúdo");
+    }
+  }
+
+  function canUseAI() {
+    const count = Number(localStorage.getItem("ai_usage") || 0);
+
+    if (count >= 5) {
+      alert("Limite diário atingido");
+      return false;
+    }
+
+    localStorage.setItem("ai_usage", String(count + 1));
+    return true;
   }
 
   return (
