@@ -1,4 +1,4 @@
-import { useEffect, useState, type SetStateAction } from "react";
+import { useState, type SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { Textarea } from "../components/Textarea";
 import { Button } from "../components/Button";
@@ -11,13 +11,7 @@ export default function Home({
 }) {
   const [text, setText] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const hasData = localStorage.getItem("studyai_data") !== null;
-    if (hasData) {
-      navigate("/dashboard");
-    }
-  }, []);
+  const hasStudy = localStorage.getItem("studyai_data");
 
   async function handleGenerate() {
     if (!text) return;
@@ -47,14 +41,28 @@ export default function Home({
   return (
     <div className="">
       <h1>StudyAI</h1>
-      <Textarea
-        value={text}
-        onChange={(e: { target: { value: SetStateAction<string> } }) =>
-          setText(e.target.value)
-        }
-        placeholder="Cole aqui o texto que deseja estudar"
-      />
-      <Button onClick={handleGenerate}>Gerar</Button>
+
+      {hasStudy ? (
+        <>
+          <h2 className="text-2xl text-cyan-400 mt-6">
+            Bem vindo de volta! Continue seu estudo ou revise suas métricas.
+          </h2>
+          <Button onClick={() => navigate("/dashboard")} variant="secondary">
+            Continuar Estudo
+          </Button>
+        </>
+      ) : (
+        <>
+          <Textarea
+            value={text}
+            onChange={(e: { target: { value: SetStateAction<string> } }) =>
+              setText(e.target.value)
+            }
+            placeholder="Cole aqui o texto que deseja estudar"
+          />
+          <Button onClick={handleGenerate}>Gerar</Button>
+        </>
+      )}
     </div>
   );
 }
