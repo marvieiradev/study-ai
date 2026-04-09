@@ -43,6 +43,7 @@ TIPOS DE EXERCÍCIOS
 - resposta deve ter APENAS UMA palavra
 - sem frases
 - sem artigos (ex: "a", "o", "um")
+- sem números (ex: "1", "2", "3")
 
 Exemplo:
 {
@@ -57,6 +58,9 @@ Exemplo:
 - Sempre 3 respostas
 - As respostas DEVEM estar NA ORDEM CORRETA da frase
 - Cada resposta deve ser UMA palavra
+- As lacunas devem ter no mínimo 2 palavras entre elas para evitar respostas óbvias.
+- Não pode haver menos de 3 lacunas na frase.
+- Não use artigos (ex: "a", "o", "um") ou números (ex: "1", "2", "3") como resposta
 
 Exemplo:
 {
@@ -69,12 +73,13 @@ Exemplo:
 REGRAS GERAIS
 ========================
 
-- Gere EXATAMENTE 10 exercícios
+- Gere EXATAMENTE 10 exercícios, não menos e não mais
 - Misture os tipos (quiz, input, complete)
 - NÃO repita perguntas
 - NÃO use markdown
 - NÃO explique nada
 - Retorne APENAS JSON válido
+- Não use numeros ou artigos como respostas
 
 IMPORTANTE:
 - O campo "answers" no tipo COMPLETE deve estar na ORDEM CORRETA
