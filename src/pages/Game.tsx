@@ -1,4 +1,10 @@
 import { useState, type Key } from "react";
+import {
+  updateAfterAnswer,
+  finishSession,
+  checkAchievements,
+} from "../services/metrics";
+import { useNavigate } from "react-router-dom";
 
 export default function Game({ studyData }: { studyData: any }) {
   const [current, setCurrent] = useState(0);
@@ -8,16 +14,23 @@ export default function Game({ studyData }: { studyData: any }) {
   const exercises = studyData.exercicios || [];
   const exercise = exercises[current];
 
+  const navigate = useNavigate();
+
   function next() {
     if (current + 1 < exercises.length) {
       setCurrent(current + 1);
     } else {
       alert("Fim! Pontuação: " + score);
+      finishSession(score);
+      checkAchievements();
+      navigate("/dashboard");
     }
   }
 
   function handleCorrect() {
     setScore(score + 10);
+    updateAfterAnswer(true);
+    checkAchievements();
     next();
   }
 
@@ -28,7 +41,10 @@ export default function Game({ studyData }: { studyData: any }) {
       setCurrent(0);
       setLives(3);
       setScore(0);
+      navigate("/dashboard");
     }
+    updateAfterAnswer(false);
+    checkAchievements();
   }
 
   if (!exercise) return <p className="text-white">Sem exercícios</p>;
@@ -40,9 +56,7 @@ export default function Game({ studyData }: { studyData: any }) {
         <p>⚡ {score}</p>
       </div>
 
-      <h2 className="text-xl text-cyan-400">
-        {exercise.question || exercise.sentence}
-      </h2>
+      <h2 className="text-xl text-cyan-400">{exercise.question}</h2>
 
       {exercise.type === "quiz" && (
         <div className="flex flex-col gap-3">
@@ -89,9 +103,16 @@ function InputMode({
   onWrong: () => void;
 }) {
   const [value, setValue] = useState("");
+  const normalizeText = (text = "") =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w\s]/g, "")
+      .trim();
 
   function check() {
-    if (value.toLowerCase().trim() === answer.toLowerCase()) {
+    if (normalizeText(value) === normalizeText(answer)) {
       onCorrect();
     } else {
       onWrong();
@@ -128,9 +149,18 @@ function CompleteMode({
     [...exercise.answers].sort(() => Math.random() - 0.5)
   );
 
-  function add(word: string, index: number) {
+  function add(word: any, index: number) {
+    if (selected.length >= 3) return;
+    // @ts-expect-error
     setSelected([...selected, word]);
     setOptions(options.filter((_, i) => i !== index));
+  }
+
+  function remove(wordIndex: number) {
+    const word = selected[wordIndex];
+    const newSelected = selected.filter((_, i) => i !== wordIndex);
+    setSelected(newSelected);
+    setOptions([...options, word]);
   }
 
   function reset() {
@@ -147,27 +177,45 @@ function CompleteMode({
     } else {
       onWrong();
     }
-
     reset();
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-lg">{exercise.sentence.replace(/___/g, "_____")}</p>
+    <div className="flex flex-col gap-5">
+      <h2 className="text-xl text-cyan-400 flex flex-wrap items-center gap-2">
+        {exercise.sentence.split("___").map((part: string, index: number) => (
+          <span key={index} className="flex items-center gap-2">
+            {part}
 
+            {index < exercise.answers.length && (
+              <span
+                onClick={() => selected[index] && remove(index)}
+                className={`min-w-20 h-10 px-2 flex items-center justify-center rounded-xl border cursor-pointer transition
+            ${
+              selected[index]
+                ? "bg-cyan-500 text-black"
+                : "bg-zinc-800 border-zinc-600 text-gray-500"
+            }`}
+              >
+                {selected[index] || "___"}
+              </span>
+            )}
+          </span>
+        ))}
+      </h2>
+
+      {/* Opções embaralhadas */}
       <div className="flex gap-2 flex-wrap">
         {options.map((word, i) => (
           <button
             key={i}
             onClick={() => add(word, i)}
-            className="bg-zinc-700 px-3 py-1 rounded hover:bg-cyan-500/30"
+            className="bg-zinc-700 px-3 py-1 rounded hover:bg-cyan-500/30 transition"
           >
             {word}
           </button>
         ))}
       </div>
-
-      <p className="text-cyan-400">Resposta: {selected.join(" ")}</p>
 
       <div className="flex gap-2">
         <button onClick={check} className="bg-cyan-500 px-3 py-1 rounded">
