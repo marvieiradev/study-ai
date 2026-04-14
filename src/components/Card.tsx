@@ -6,9 +6,13 @@ export function Card({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-zinc-900 border border-cyan-500/20 rounded-2xl p-4 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/30 transition">
-      <h2 className="text-xl font-semibold text-cyan-300 mb-3">{title}</h2>
-      <div className="space-y-2 text-sm text-gray-300">{children}</div>
+    <div className="h-full flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-auto bg-gray-50 border border-sky-200/50 p-4 shadow-sm shadow-cyan-500/10 hover:shadow-cyan-500/30 transition overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 text-start">
+          {title}
+        </h2>
+        <div className="space-y-2 text-sm text-gray-600">{children}</div>
+      </div>
     </div>
   );
 }

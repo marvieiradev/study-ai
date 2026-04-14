@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Card } from "../components/Card";
 import DashboardMetrics from "../components/DashboardMetrics";
-import { Achievements } from "../components/Achievements";
+import { Header } from "../components/Header";
+import { Button } from "../components/Button";
+import { InsightsCard } from "../components/InsightsCard";
 
 interface StudyData {
   tema: string;
@@ -13,77 +15,57 @@ interface StudyData {
 export default function Dashboard({ studyData }: { studyData: StudyData }) {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-black text-white p-6">
-      <div className="max-w-5xl mx-auto space-y-6">
-        <div className="flex justify-between items-center">
-          {studyData ? (
-            <>
-              <h1 className="text-3xl font-bold text-cyan-400">
-                {studyData.tema}
-              </h1>
+    <>
+      <div className="h-screen flex flex-col bg-gray-100 text-white md:overflow-hidden">
+        <Header />
+        {studyData && (
+          <div className="max-w-6xl w-full mx-auto p-4 flex justify-between items-center md:shrink-0">
+            <h1 className="text-3xl font-bold text-gray-800 mt-2">
+              {studyData.tema}
+            </h1>
+            <Button onClick={() => navigate("/")}>Estudar</Button>
+            <Button onClick={() => navigate("/game")}>Praticar</Button>
+          </div>
+        )}
 
-              <button
-                onClick={() => navigate("/game")}
-                className="bg-cyan-500 hover:bg-cyan-400 text-black px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/30 transition"
-              >
-                Praticar 🚀
-              </button>
-
-              <button
-                onClick={() => navigate("/")}
-                className="bg-purple-500 hover:bg-purple-400 text-black px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/30 transition"
-              >
-                Estudar 📚
-              </button>
-            </>
-          ) : (
-            <>
-              <h1 className="text-3xl font-bold text-cyan-400">
-                Gere um estudo para começar
-              </h1>
-
-              <button
-                onClick={() => navigate("/")}
-                className="bg-purple-500 hover:bg-purple-400 text-black px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/30 transition"
-              >
-                Estudar 📚
-              </button>
-            </>
-          )}
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {studyData && (
-            <>
+        <div className="md:flex-1 md:min-h-0 max-w-7xl mx-auto w-full p-4">
+          <div className="h-full grid gap-4 grid-cols-1 md:auto-rows-fr md:grid-cols-3 md:grid-rows-3">
+            <div className="md:col-span-1 md:row-span-3">
               <Card title="Resumo">
-                {studyData.resumo.map((item, i) => (
-                  <p key={i}>• {item}</p>
-                ))}
+                <p className="text-justify text-gray-700">
+                  {studyData.resumo.map((item, i) => (
+                    <span key={i}>{item}</span>
+                  ))}
+                </p>
               </Card>
+            </div>
 
-              <Card title="Insights">
-                {studyData.insights.map((item, i) => (
-                  <p key={i}>• {item}</p>
-                ))}
+            <div className="md:col-span-2 md:row-span-1">
+              <Card title="Métricas">
+                <DashboardMetrics />
               </Card>
+            </div>
 
+            <div className="md:col-span-1 md:row-span-2 md:col-start-2">
               <Card title="Dicas">
                 {studyData.dicas.map((item, i) => (
                   <p key={i}>• {item}</p>
                 ))}
               </Card>
-            </>
-          )}
+            </div>
 
-          <Card title="Métricas">
-            <DashboardMetrics />
-          </Card>
-
-          <Card title="Conquistas">
-            <Achievements />
-          </Card>
+            <div className="md:col-span-1 md:row-span-2 md:col-start-3">
+              <Card title="Insights">
+                <div className="grid  gap-4">
+                  {studyData.insights.map((item, i) => (
+                    <InsightsCard key={i} text={item} />
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
