@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { getMetrics } from "../services/metrics";
+import { CardMetrics } from "./CardMetrics";
+import { LuClock4, LuNotebookPen } from "react-icons/lu";
+import { FaTrophy } from "react-icons/fa";
+import { FaCalendarDays, FaStar } from "react-icons/fa6";
+import { TbTargetArrow } from "react-icons/tb";
 
 export default function DashboardMetrics() {
   const [metrics, setMetrics] = useState(getMetrics());
@@ -17,34 +22,56 @@ export default function DashboardMetrics() {
     : 0;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div>
-        <div className="bg-slate-200 rounded-full h-4 overflow-hidden">
-          <div
-            className={`bg-blue-500 h-4 rounded-full transition-all duration-500`}
-            style={{
-              width: `${(1000 - metrics.xp) / 10}%`,
-            }}
-          />
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-8 justify-center items-start">
+        <div className="flex justify-between w-full">
+          <div className="flex flex-col w-full gap-1">
+            <div className="bg-slate-200 rounded-full h-5 overflow-hidden">
+              <div
+                className={`bg-linear-to-r from-violet-600 to-sky-500 h-5 rounded-full transition-all duration-500`}
+                style={{
+                  width: `${(metrics.xp / metrics.maxXp) * 100}%`,
+                }}
+              />
+            </div>
+            <p className="text-gray-600 font-semibold text-lg">
+              XP: {metrics.xp}/{metrics.maxXp}
+            </p>
+          </div>
         </div>
-        <p className="text-gray-600 text-sm">XP: {metrics.xp}/1000</p>
       </div>
 
-      <Card title="Nível" value={metrics.level} />
-      <Card title="Precisão" value={`${accuracy}%`} />
-      <Card title="Sequência" value={`${metrics.streak} dias`} />
-      <Card title="Exercícios" value={metrics.totalExercises} />
-      <Card title="Sessões" value={metrics.sessionsCompleted} />
-      <Card title="Melhor Score" value={metrics.bestScore} />
-    </div>
-  );
-}
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+        <CardMetrics title="Nível" style="bg-yellow-500">
+          <FaStar className="h-5 w-5 text-yellow-500" />
+          <span className="text-yellow-500">{metrics.level}</span>
+        </CardMetrics>
 
-function Card({ title, value }: { title: string; value: string | number }) {
-  return (
-    <div className="bg-zinc-900 p-4 rounded-2xl border border-cyan-500/20 shadow-md">
-      <p className="text-gray-400 text-sm">{title}</p>
-      <h2 className="text-xl font-bold text-cyan-400">{value}</h2>
+        <CardMetrics title="Precisão" style="bg-sky-500">
+          <TbTargetArrow className="h-5 w-5 text-sky-500" />
+          <span className="text-sky-500">{accuracy}%</span>
+        </CardMetrics>
+
+        <CardMetrics title="Sequência" style="bg-emerald-500">
+          <FaCalendarDays className="h-5 w-5 text-emerald-500" />
+          <span className="text-emerald-500">{metrics.streak} dias</span>
+        </CardMetrics>
+
+        <CardMetrics title="Exercícios" style="bg-purple-500">
+          <LuNotebookPen className="h-5 w-5 text-purple-500" />
+          <span className="text-purple-500">{metrics.totalExercises}</span>
+        </CardMetrics>
+
+        <CardMetrics title="Sessões" style="bg-orange-500">
+          <LuClock4 className="h-5 w-5 text-orange-500" />
+          <span className="text-orange-500">{metrics.sessionsCompleted}</span>
+        </CardMetrics>
+
+        <CardMetrics title="Melhor Score" style="bg-red-500">
+          <FaTrophy className="h-5 w-5 text-red-500" />
+          <span className="text-red-500">{metrics.bestScore}</span>
+        </CardMetrics>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ const METRICS_KEY = "studyai_metrics";
 export const defaultMetrics = {
   xp: 0,
   level: 1,
+  maxXp: 300,
   totalExercises: 0,
   correctAnswers: 0,
   wrongAnswers: 0,
@@ -21,12 +22,20 @@ export function saveMetrics(metrics: any) {
   localStorage.setItem(METRICS_KEY, JSON.stringify(metrics));
 }
 
-export function calculateLevel(xp: number) {
+/*export function calculateLevel(xp: number) {
   if (xp < 100) return 1;
   if (xp < 300) return 2;
   if (xp < 600) return 3;
   if (xp < 1000) return 4;
   return 5;
+}*/
+
+export function calculateLevelProgress(xp: number) {
+  if (xp < 300) return { level: 1, maxXp: 300 };
+  if (xp < 500) return { level: 2, maxXp: 500 };
+  if (xp < 1000) return { level: 3, maxXp: 1000 };
+  if (xp < 2000) return { level: 4, maxXp: 2000 };
+  return { level: 5, maxXp: 5000 };
 }
 
 export function updateAfterAnswer(isCorrect: any) {
@@ -42,7 +51,8 @@ export function updateAfterAnswer(isCorrect: any) {
     metrics.xp += 5;
   }
 
-  metrics.level = calculateLevel(metrics.xp);
+  metrics.level = calculateLevelProgress(metrics.xp).level;
+  metrics.maxXp = calculateLevelProgress(metrics.xp).maxXp;
 
   saveMetrics(metrics);
 }
