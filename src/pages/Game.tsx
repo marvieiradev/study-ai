@@ -22,8 +22,6 @@ export default function Game({ studyData }: { studyData: any }) {
 
   const navigate = useNavigate();
 
-  //setShowFeedback(false);
-
   function handleNext() {
     if (current + 1 < exercises.length) {
       setCurrent(current + 1);
@@ -115,11 +113,14 @@ export default function Game({ studyData }: { studyData: any }) {
         </>
       )}
       {exercise.type === "input" && (
-        <InputMode
-          answer={exercise.answer}
-          onCorrect={handleCorrect}
-          onWrong={handleWrong}
-        />
+        <>
+          <h2 className="text-xl text-gray-700 mb-2">{exercise.question}</h2>
+          <InputMode
+            answer={exercise.answer}
+            onCorrect={handleCorrect}
+            onWrong={handleWrong}
+          />
+        </>
       )}
       {exercise.type === "complete" && (
         <CompleteMode

@@ -39,10 +39,15 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
         <div className="md:flex-1 md:min-h-0 max-w-7xl mx-auto w-full p-4">
           <div className="h-full grid gap-3 grid-cols-1 md:auto-rows-fr md:grid-cols-3 md:grid-rows-3">
             <div className="md:col-span-1 md:row-span-3">
-              <Card title="Resumo">
-                <p className="text-justify text-gray-700">
+              <Card title="Resumo Inteligente">
+                <p className=" text-gray-700 flex flex-col gap-2">
                   {studyData.resumo.map((item, i) => (
-                    <span key={i}>{item} </span>
+                    <p
+                      className="flex rounded-2xl bg-gray-100 text-start p-2"
+                      key={i}
+                    >
+                      {item}
+                    </p>
                   ))}
                 </p>
               </Card>
