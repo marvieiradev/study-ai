@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoMdCheckmark, IoMdClose } from "react-icons/io";
 
-export default function ExerciceFeedback({
+export default function GameFeedback({
   open,
   onContinue,
   isCorrect,

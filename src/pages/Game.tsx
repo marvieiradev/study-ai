@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   updateAfterAnswer,
   finishSession,
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { GoHeartFill } from "react-icons/go";
 import { TiFlash } from "react-icons/ti";
 import { AiFillCloseCircle } from "react-icons/ai";
-import ExerciceFeedback from "../components/ExerciceFeedback";
+import GameFeedback from "../components/GameFeedback";
 import { GameModeRespond } from "../components/GameModeRespond";
 import { GameModeComplete } from "../components/GameModeComplete";
 import { GameModeQuiz } from "../components/GameModeQuiz";
@@ -21,21 +21,38 @@ export default function Game({ studyData }: { studyData: any }) {
   const [isCorrect, setIsCorrect] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showGameOver, setShowGameOver] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [activeTime, setActiveTime] = useState(true);
 
   const exercises = studyData.exercicios || [];
   const exercise = exercises[current];
   const gameOver = lives <= 0;
+  const resultGameOver = gameOver ? false : true;
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval = null;
+    if (activeTime) {
+      interval = setInterval(() => {
+        setSeconds((s) => s + 1);
+      }, 1000);
+    } else {
+      // @ts-expect-error
+      clearInterval(interval);
+    }
+    // @ts-expect-error
+    return () => clearInterval(interval);
+  }, [activeTime]);
 
   function handleNext() {
     if (current + 1 < exercises.length) {
       setCurrent(current + 1);
     } else {
-      alert("Fim! Pontuação: " + score);
+      setActiveTime(false);
+      setShowGameOver(true);
       finishSession(score);
       checkAchievements();
-      navigate("/dashboard");
     }
     setShowFeedback(false);
     if (gameOver) setShowGameOver(true);
@@ -97,7 +114,7 @@ export default function Game({ studyData }: { studyData: any }) {
             <div
               className={`bg-linear-to-r from-violet-600 to-sky-500 h-4 rounded-full transition-all duration-500`}
               style={{
-                width: `${(current / exercises.length) * 100}%`,
+                width: `${((current + 1) / exercises.length) * 100}%`,
               }}
             />
           </div>
@@ -135,13 +152,19 @@ export default function Game({ studyData }: { studyData: any }) {
             />
           )}
         </div>
-        <ExerciceFeedback
+        <GameFeedback
           open={showFeedback}
           onContinue={handleNext}
           isCorrect={isCorrect}
         />
 
-        <GameOver open={showGameOver} />
+        <GameOver
+          open={showGameOver}
+          result={resultGameOver}
+          precision={Math.round((score / (exercises.length * 10)) * 100)}
+          time={seconds}
+          xp={score}
+        />
       </div>
     </>
   );
