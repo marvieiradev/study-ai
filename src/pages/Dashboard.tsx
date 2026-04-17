@@ -42,12 +42,12 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               <Card title="Resumo Inteligente">
                 <p className=" text-gray-700 flex flex-col gap-2">
                   {studyData.resumo.map((item, i) => (
-                    <p
+                    <span
                       className="flex rounded-2xl bg-gray-100 text-start p-2"
                       key={i}
                     >
                       {item}
-                    </p>
+                    </span>
                   ))}
                 </p>
               </Card>
