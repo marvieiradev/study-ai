@@ -19,13 +19,15 @@ export function GameModeQuiz({
   }
   return (
     <>
-      <h2 className="text-xl text-gray-700 mb-2">{exercise.question}</h2>
+      <h2 className="text-lg md:text-xl text-gray-700 mb-4">
+        {exercise.question}
+      </h2>
       <div className="flex flex-col gap-4">
         {exercise.options.map((opt: string, i: number) => (
           <button
             key={i}
             onClick={() => setSelected(opt)}
-            className={` border-2 border-sky-500 p-3 rounded-2xl hover:border-violet-600 transition-all duration-500 text-center ${
+            className={` border-2 border-sky-500 p-3 rounded-2xl hover:border-violet-600 transition-all duration-500 text-center cursor-pointer ${
               selected === opt
                 ? "bg-violet-600 text-white border-violet-600"
                 : "bg-white text-gray-600"

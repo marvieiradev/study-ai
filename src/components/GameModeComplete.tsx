@@ -57,7 +57,7 @@ export function GameModeComplete({
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-xl text-gray-700 leading-relaxed items-center text-center">
+      <h2 className="text-lg md:text-xl text-gray-700 leading-relaxed items-center text-center mb-4">
         {parts.map((part: string, index: number) => (
           <span key={index}>
             {part}

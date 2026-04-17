@@ -12,7 +12,7 @@ export function GameModeRespond({
   onWrong: () => void;
 }) {
   const [value, setValue] = useState("");
-  const [part1, part2] = exercise.question.split(" ___ ");
+  const [part1, part2] = exercise.question.split("___");
   const validResponse =
     value && value.trim() !== "" && value.trim().length >= 3;
   const normalizeText = (text = "") =>
@@ -34,7 +34,7 @@ export function GameModeRespond({
 
   return (
     <>
-      <h2 className="text-xl text-gray-700 mb-2">
+      <h2 className="text-lg md:text-xl text-gray-700 mb-4">
         {part1}{" "}
         <span className="inline-block min-w-16 border-b-2 border-gray-700 whitespace-nowrap"></span>{" "}
         {part2}
