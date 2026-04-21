@@ -1,4 +1,4 @@
-import { useState, type SetStateAction } from "react";
+import { useEffect, useState, type SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { Textarea } from "../components/Textarea";
 import { Button } from "../components/Button";
@@ -12,19 +12,21 @@ export default function Home({
   const [text, setText] = useState("");
   const navigate = useNavigate();
   const hasStudy = localStorage.getItem("studyai_data");
+  const hasInit = sessionStorage.getItem("init");
 
-  async function handleGenerate() {
-    if (!text) return;
+  const initData = `{
+    "tema": "",
+    "resumo": [],
+    "insights": [],
+    "dicas": [],
+    "exercicios": []
+}`;
 
-    try {
-      const data = await generateStudyContent(text);
-      console.log("Dados gerados:", data);
-      setStudyData(data);
+  useEffect(() => {
+    if (hasInit) {
       navigate("/dashboard");
-    } catch (err) {
-      alert("Erro ao gerar conteúdo");
     }
-  }
+  }, []);
 
   function canUseAI() {
     const count = Number(localStorage.getItem("ai_usage") || 0);
@@ -38,10 +40,22 @@ export default function Home({
     return true;
   }
 
+  function initStudy() {
+    const text = JSON.parse(initData);
+    setStudyData(text);
+    navigate("/dashboard");
+    sessionStorage.setItem("init", "0");
+  }
+
+  function continueStudy() {
+    navigate("/dashboard");
+    sessionStorage.setItem("init", "0");
+  }
+
   return (
     <>
-      <div className="h-screen w-full  flex flex-col bg-gray-100 text-gray-800 justify-center items-center p-4">
-        <div className="max-w-7xl justify-center items-center w-full flex flex-col gap-6">
+      <div className="h-screen w-full  flex flex-col bg-gray-100 text-gray-800 justify-center items-center p-4 gap-6">
+        <div className="max-w-7xl justify-center items-center w-full flex flex-col">
           <div className="flex gap-2 items-center justify-center">
             <img
               src="./favicon.svg"
@@ -52,26 +66,15 @@ export default function Home({
               Study AI
             </h1>
           </div>
-
-          <Textarea
-            value={text}
-            onChange={(e: { target: { value: SetStateAction<string> } }) =>
-              setText(e.target.value)
-            }
-            placeholder="Cole aqui o texto que deseja estudar"
-            className="h-50 max-w-5xl border-2 border-gray-200"
-          />
-          <Button onClick={handleGenerate}>Gerar</Button>
         </div>
-        {hasStudy && (
-          <div className="w-full mt-10 bg-gray-200 flex justify-center items-center p-2 gap-4">
-            <h2 className="text-lg text-sky-600 font-bold">
-              Bem vindo de volta! Continue seu estudo ou revise suas métricas.
-            </h2>
-            <Button onClick={() => navigate("/dashboard")} variant="secondary">
-              Continuar Estudo
-            </Button>
-          </div>
+        {hasStudy ? (
+          <Button onClick={continueStudy} variant="secondary">
+            Continuar Estudo
+          </Button>
+        ) : (
+          <Button onClick={initStudy} variant="primary">
+            Iniciar Estudo
+          </Button>
         )}
       </div>
     </>
