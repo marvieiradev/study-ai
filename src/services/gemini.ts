@@ -39,7 +39,7 @@ TIPOS DE EXERCÍCIOS
 }
 
 2. INPUT (resposta curta - UMA PALAVRA APENAS)
-⚠️ REGRA OBRIGATÓRIA:
+REGRA OBRIGATÓRIA:
 - resposta deve ter APENAS UMA palavra
 - sem frases
 - sem artigos (ex: "a", "o", "um")
@@ -53,7 +53,7 @@ Exemplo:
 }
 
 3. COMPLETE (3 lacunas fixas)
-⚠️ REGRAS OBRIGATÓRIAS:
+REGRAS OBRIGATÓRIAS:
 - A frase deve ter EXATAMENTE 3 lacunas (___)
 - Sempre 3 respostas
 - As respostas DEVEM estar NA ORDEM CORRETA da frase
