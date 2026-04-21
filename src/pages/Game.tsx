@@ -6,13 +6,13 @@ import {
 } from "../services/metrics";
 import { useNavigate } from "react-router-dom";
 import { GoHeartFill } from "react-icons/go";
-import { TiFlash } from "react-icons/ti";
 import { AiFillCloseCircle } from "react-icons/ai";
 import GameFeedback from "../components/GameFeedback";
 import { GameModeRespond } from "../components/GameModeRespond";
 import { GameModeComplete } from "../components/GameModeComplete";
 import { GameModeQuiz } from "../components/GameModeQuiz";
 import GameOver from "../components/GameOver";
+import { FaStar } from "react-icons/fa6";
 
 export default function Game({ studyData }: { studyData: any }) {
   const [current, setCurrent] = useState(0);
@@ -88,14 +88,14 @@ export default function Game({ studyData }: { studyData: any }) {
         <div className="flex justify-between">
           <div className="flex gap-2 items-center">
             <GoHeartFill className="w-5 h-5 text-red-600" />
-            <span className="text-gray-600 text-lg font-semibold">
+            <span className="text-gray-600 text-lg md:text-xl font-semibold">
               {" "}
               {lives}
             </span>
           </div>
           <div className="flex gap-2 items-center">
-            <TiFlash className="w-5 h-5 text-yellow-600" />
-            <span className="text-gray-600 text-lg font-semibold">
+            <FaStar className="w-5 h-5 text-yellow-600" />
+            <span className="text-gray-600 text-lg md:text-xl font-semibold">
               {" "}
               {score}
             </span>
