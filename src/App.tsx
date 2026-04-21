@@ -7,6 +7,14 @@ import Game from "./pages/Game";
 export default function App() {
   const [studyData, setStudyData] = useState<any>(null);
 
+  const initData = `{
+    "tema": "",
+    "resumo": [],
+    "insights": [],
+    "dicas": [],
+    "exercicios": []
+}`;
+
   // 🔁 Load from localStorage
   useEffect(() => {
     try {
@@ -27,12 +35,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home setStudyData={setStudyData} />} />
-      <Route
-        path="/dashboard"
-        element={
-          studyData ? <Dashboard studyData={studyData} /> : <Navigate to="/" />
-        }
-      />
+      <Route path="/dashboard" element={<Dashboard studyData={studyData} />} />
       <Route
         path="/game"
         element={
