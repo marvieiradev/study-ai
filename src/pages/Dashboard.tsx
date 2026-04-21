@@ -35,11 +35,11 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               {studyData?.tema ? studyData.tema : "Sem estudos"}
             </h1>
             <div className="flex gap-4 mt-2 md:gap-8 md:mt-0">
-              <Button onClick={() => setShowGenerate(true)}>
+              <Button type="outline" onClick={() => setShowGenerate(true)}>
                 Estudar
                 <FaBook className="h-5 w-5" />
               </Button>
-              <Button onClick={() => navigate("/game")}>
+              <Button type="normal" onClick={() => navigate("/game")}>
                 Praticar
                 <IoRocketSharp className="h-5 w-5" />
               </Button>
