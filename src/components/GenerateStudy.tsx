@@ -5,6 +5,7 @@ import { useState, type SetStateAction } from "react";
 import { generateStudyContent } from "../services/gemini";
 import { estudo } from "../data/estudo";
 import { IoMdCloseCircle } from "react-icons/io";
+import { Loading } from "./Loading";
 
 export function GenerateStudy({
   open,
@@ -15,6 +16,8 @@ export function GenerateStudy({
 }) {
   if (!open) return null;
   const [text, setText] = useState("");
+  const [showLoading, setShowLoading] = useState(false);
+  const [invisible, setInvisible] = useState(false);
 
   const navigate = useNavigate();
   const hasStudy = localStorage.getItem("studyai_data")!;
@@ -23,25 +26,39 @@ export function GenerateStudy({
   async function handleGenerate() {
     if (!text) return;
     try {
+      setShowLoading(true);
+      setInvisible(true);
       const data = await generateStudyContent(text);
       console.log("Dados gerados:", data);
       setStudyData(data);
-      navigate("/dashboard");
     } catch (err) {
       alert("Erro ao gerar conteúdo");
+      setShowLoading(false);
+    } finally {
+      setShowLoading(false);
+      navigate(0);
     }
   }
 
   function generateTestData() {
-    const text = JSON.parse(estudo);
-    console.log(text);
-    setStudyData(text);
-    navigate(0);
+    setShowLoading(true);
+    const text = JSON.parse(
+      JSON.stringify(estudo[Math.floor(Math.random() * estudo.length)])
+    );
+    setTimeout(() => {
+      setStudyData(text);
+      setShowLoading(false);
+      navigate(0);
+    }, 4000);
   }
 
   return (
     <>
-      <div className="w-full h-full bg-white/80 fixed inset-x-0 z-50 p-5">
+      <div
+        className={`w-full h-full bg-white/80 fixed inset-x-0 z-50 p-5 ${
+          invisible ? "opacity-0" : ""
+        }`}
+      >
         <div className="h-full w-full flex flex-col items-center bg-gray-50 border-4 border-gray-200 rounded-2xl text-gray-800 p-4 inset-x-0 z-50">
           <div className="flex w-full justify-end">
             <button className="" onClick={onClose}>
@@ -68,7 +85,9 @@ export function GenerateStudy({
               placeholder="Cole aqui o texto que deseja estudar"
               className="h-50 max-w-5xl border-2 border-gray-200"
             />
-            <Button onClick={generateTestData}>Gerar</Button>
+            <Button type="normal" onClick={generateTestData}>
+              Gerar
+            </Button>
           </div>
           {hasStudy && data.tema && (
             <p className="font-semibold mt-10 text-red-500">
@@ -78,6 +97,7 @@ export function GenerateStudy({
           )}
         </div>
       </div>
+      <Loading open={showLoading} />
     </>
   );
 }
