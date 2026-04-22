@@ -6,6 +6,8 @@ import { generateStudyContent } from "../services/gemini";
 import { estudo } from "../data/estudo";
 import { IoMdCloseCircle } from "react-icons/io";
 import { Loading } from "./Loading";
+import { Alert } from "./Alert";
+import { IoSparkles } from "react-icons/io5";
 
 export function GenerateStudy({
   open,
@@ -14,14 +16,16 @@ export function GenerateStudy({
   open: boolean;
   onClose: () => void;
 }) {
-  if (!open) return null;
   const [text, setText] = useState("");
   const [showLoading, setShowLoading] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [invisible, setInvisible] = useState(false);
 
   const navigate = useNavigate();
   const hasStudy = localStorage.getItem("studyai_data")!;
   const data = JSON.parse(hasStudy);
+
+  if (!open) return null;
 
   async function handleGenerate() {
     if (!text) return;
@@ -29,11 +33,9 @@ export function GenerateStudy({
       setShowLoading(true);
       setInvisible(true);
       const data = await generateStudyContent(text);
-      console.log("Dados gerados:", data);
       setStudyData(data);
     } catch (err) {
-      alert("Erro ao gerar conteúdo");
-      setShowLoading(false);
+      showAlertError();
     } finally {
       setShowLoading(false);
       navigate(0);
@@ -52,6 +54,11 @@ export function GenerateStudy({
     }, 4000);
   }
 
+  function showAlertError() {
+    setShowLoading(false);
+    setShowAlert(true);
+  }
+
   return (
     <>
       <div
@@ -65,15 +72,15 @@ export function GenerateStudy({
               <IoMdCloseCircle className="h-8 w-8 text-gray-700 cursor-pointer" />
             </button>
           </div>
-          <div className="max-w-7xl justify-center items-center w-full flex flex-col gap-6 mt-8">
-            <div className="flex gap-2 items-center justify-center max-w-5xl mb-8">
-              <h1 className="text-lg md:text-2xl text-gray-600">
+          <div className="max-w-7xl justify-around items-center w-full flex flex-col gap-6 mt-8">
+            <div className="flex gap-2 items-center justify-center max-w-5xl mb-2 md:mb-8">
+              <h1 className="text-base md:text-2xl text-gray-600">
                 Use o{" "}
                 <span className="bg-clip-text text-transparent bg-linear-to-r from-violet-600 to-sky-500 font-bold">
                   Study AI
                 </span>{" "}
                 para gerar um estudo inteligente, com resumo, dicas e um modo
-                prática totalmente interativo
+                prática totalmente interativo.
               </h1>
             </div>
 
@@ -85,12 +92,19 @@ export function GenerateStudy({
               placeholder="Cole aqui o texto que deseja estudar"
               className="h-50 max-w-5xl border-2 border-gray-200"
             />
-            <Button type="normal" onClick={generateTestData}>
-              Gerar
+            <Button type="normal" onClick={handleGenerate}>
+              <IoSparkles className="w-5 h-5 " />
+              Gerar Estudo
             </Button>
           </div>
+          <div
+            className="text-sm md:text-base cursor-pointer mt-4 md:mt-8 text-decoration-line: underline text-sky-500"
+            onClick={generateTestData}
+          >
+            Ou clique aqui para gerar dados simulados
+          </div>
           {hasStudy && data.tema && (
-            <p className="font-semibold mt-10 text-red-500">
+            <p className="font-semibold text-sm md:text-base mt-4 md:mt-8 mb-4 md:mb-8 text-red-500 p-2 rounded-sm bg-red-50">
               Já existe um estudo! Gerar um novo estudo, substituirá o estudo
               atual.
             </p>
@@ -98,6 +112,11 @@ export function GenerateStudy({
         </div>
       </div>
       <Loading open={showLoading} />
+      <Alert
+        open={showAlert}
+        onNo={() => setShowAlert(false)}
+        onYes={generateTestData}
+      />
     </>
   );
 }
