@@ -1,15 +1,12 @@
-import { useEffect, useState, type SetStateAction } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Textarea } from "../components/Textarea";
 import { Button } from "../components/Button";
-import { generateStudyContent } from "../services/gemini";
 
 export default function Home({
   setStudyData,
 }: {
   setStudyData: (data: any) => void;
 }) {
-  const [text, setText] = useState("");
   const navigate = useNavigate();
   const hasStudy = localStorage.getItem("studyai_data");
   const hasInit = sessionStorage.getItem("init");
@@ -28,7 +25,7 @@ export default function Home({
     }
   }, []);
 
-  function canUseAI() {
+  /*function canUseAI() {
     const count = Number(localStorage.getItem("ai_usage") || 0);
 
     if (count >= 5) {
@@ -38,7 +35,7 @@ export default function Home({
 
     localStorage.setItem("ai_usage", String(count + 1));
     return true;
-  }
+  }*/
 
   function initStudy() {
     const text = JSON.parse(initData);
@@ -68,11 +65,11 @@ export default function Home({
           </div>
         </div>
         {hasStudy ? (
-          <Button onClick={continueStudy} variant="secondary">
+          <Button onClick={continueStudy} type="normal">
             Continuar Estudo
           </Button>
         ) : (
-          <Button onClick={initStudy} variant="primary">
+          <Button onClick={initStudy} type="normal">
             Iniciar Estudo
           </Button>
         )}

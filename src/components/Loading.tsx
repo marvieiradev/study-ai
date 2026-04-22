@@ -5,8 +5,6 @@ import { IoSparkles } from "react-icons/io5";
 import { MdLaptopChromebook } from "react-icons/md";
 
 export function Loading({ open }: { open: boolean }) {
-  if (!open) return null;
-
   const [index, setIndex] = useState(0);
 
   const components = [
@@ -23,6 +21,8 @@ export function Loading({ open }: { open: boolean }) {
 
     return () => clearInterval(timer);
   }, [components.length]);
+
+  if (!open) return null;
 
   return (
     <>
