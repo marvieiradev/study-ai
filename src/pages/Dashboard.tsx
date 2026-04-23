@@ -27,11 +27,11 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
 
   return (
     <>
-      <div className="h-screen flex flex-col bg-gray-100 text-white md:overflow-hidden">
+      <div className="h-screen flex flex-col bg-foreground-light/5 text-default md:overflow-hidden">
         <Header />
         {studyData && (
           <div className="max-w-7xl w-full mx-auto p-4 py-2 mt-2 flex flex-col md:flex-row justify-between items-center md:shrink-0">
-            <h1 className="text-2xl font-bold text-gray-800 mt-2">
+            <h1 className="text-2xl font-bold text-foreground-dark mt-2">
               {studyData?.tema ? studyData.tema : "Sem estudos"}
             </h1>
             <div className="flex gap-4 mt-2 md:gap-8 md:mt-0">
@@ -51,10 +51,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
           <div className="h-full grid gap-3 grid-cols-1 md:auto-rows-fr md:grid-cols-3 md:grid-rows-3">
             <div className="md:col-span-1 md:row-span-3">
               <Card title="Resumo Inteligente">
-                <p className=" text-gray-700 flex flex-col gap-2">
+                <p className=" text-foreground flex flex-col gap-2">
                   {studyData?.resumo.map((item, i) => (
                     <span
-                      className="flex rounded-2xl bg-gray-100 text-start p-2"
+                      className="flex rounded-2xl bg-primary-light/20 text-start p-2"
                       key={i}
                     >
                       {item}
@@ -84,7 +84,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
 
             <div className="md:col-span-1 md:row-span-2 md:col-start-3">
               <Card title="Insights">
-                <div className="grid  gap-4">
+                <div className="grid gap-4">
                   {studyData?.insights.map((item, i) => (
                     <InsightsCard key={i} text={item} />
                   ))}

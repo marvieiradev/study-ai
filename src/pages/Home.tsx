@@ -51,7 +51,7 @@ export default function Home({
 
   return (
     <>
-      <div className="h-screen w-full  flex flex-col bg-gray-100 text-gray-800 justify-center items-center p-4 gap-6">
+      <div className="h-screen w-full  flex flex-col bg-foreground-light/5 text-foreground-dark justify-center items-center p-4 gap-6">
         <div className="max-w-7xl justify-center items-center w-full flex flex-col">
           <div className="flex gap-2 items-center justify-center">
             <img
@@ -59,7 +59,7 @@ export default function Home({
               alt="Logo"
               className="h-8 w-8 mr-2 inline-block"
             />
-            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-violet-600 to-sky-500">
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-secondary to-primary">
               Study AI
             </h1>
           </div>

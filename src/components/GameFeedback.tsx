@@ -16,11 +16,9 @@ export default function GameFeedback({
 
   useEffect(() => {
     if (isCorrect) {
-      setTypeClass(
-        "bg-emerald-500 text-emerald-500 border-t-4 border-emerald-400"
-      );
+      setTypeClass("bg-success text-success border-t-4 border-success-light");
     } else {
-      setTypeClass("bg-red-500 text-red-500 border-t-4 border-red-400");
+      setTypeClass("bg-error text-error border-t-4 border-error-light");
     }
   }, []);
 
@@ -36,18 +34,18 @@ export default function GameFeedback({
         >
           <div>
             {isCorrect ? (
-              <IoMdCheckmark className="mx-auto mb-4 h-12 w-12 text-white" />
+              <IoMdCheckmark className="mx-auto mb-4 h-12 w-12 text-default" />
             ) : (
-              <IoMdClose className="mx-auto mb-4 h-12 w-12 text-white" />
+              <IoMdClose className="mx-auto mb-4 h-12 w-12 text-default" />
             )}
           </div>
-          <h2 className="text-2xl font-bold mb-4 text-white">
+          <h2 className="text-2xl font-bold mb-4 text-default">
             {isCorrect ? "Resposta Correta!" : "Resposta Incorreta!"}
           </h2>
           <button
             className={`${
-              isCorrect ? "text-emerald-500" : "text-red-500"
-            } bg-white px-4 py-2 rounded-xl text-semibold`}
+              isCorrect ? "text-success" : "text-error"
+            } bg-default px-4 py-2 rounded-xl text-semibold cursor-pointer`}
             onClick={onContinue || (() => {})}
           >
             Continuar

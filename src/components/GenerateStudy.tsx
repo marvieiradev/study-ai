@@ -62,21 +62,21 @@ export function GenerateStudy({
   return (
     <>
       <div
-        className={`w-full h-full bg-white/80 fixed inset-x-0 z-50 p-5 ${
+        className={`w-full h-full bg-card-background/80 fixed inset-x-0 z-50 p-5 ${
           invisible ? "opacity-0" : ""
         }`}
       >
-        <div className="h-full w-full flex flex-col items-center bg-gray-50 border-4 border-gray-200 rounded-2xl text-gray-800 p-4 inset-x-0 z-50">
+        <div className="h-full w-full flex flex-col items-center bg-card-background border-4 border-card-background rounded-2xl text-foreground-dark p-4 inset-x-0 z-50">
           <div className="flex w-full justify-end">
             <button className="" onClick={onClose}>
-              <IoMdCloseCircle className="h-8 w-8 text-gray-700 cursor-pointer" />
+              <IoMdCloseCircle className="h-8 w-8 text-foreground cursor-pointer" />
             </button>
           </div>
           <div className="max-w-7xl justify-around items-center w-full flex flex-col gap-6 mt-8">
             <div className="flex gap-2 items-center justify-center max-w-5xl mb-2 md:mb-8">
-              <h1 className="text-base md:text-2xl text-gray-600">
+              <h1 className="text-base md:text-2xl text-foreground">
                 Use o{" "}
-                <span className="bg-clip-text text-transparent bg-linear-to-r from-violet-600 to-sky-500 font-bold">
+                <span className="bg-clip-text text-transparent bg-linear-to-r from-secondary to-primary font-bold">
                   Study AI
                 </span>{" "}
                 para gerar um estudo inteligente, com resumo, dicas e um modo
@@ -90,7 +90,7 @@ export function GenerateStudy({
                 setText(e.target.value)
               }
               placeholder="Cole aqui o texto que deseja estudar"
-              className="h-50 max-w-5xl border-2 border-gray-200"
+              className="h-50 max-w-5xl border-2 border-card-border"
             />
             <Button type="normal" onClick={handleGenerate}>
               <IoSparkles className="w-5 h-5 " />
@@ -98,13 +98,13 @@ export function GenerateStudy({
             </Button>
           </div>
           <div
-            className="text-sm md:text-base cursor-pointer mt-4 md:mt-8 text-decoration-line: underline text-sky-500"
+            className="text-sm md:text-base cursor-pointer mt-4 md:mt-8 text-decoration-line: underline text-primary"
             onClick={generateTestData}
           >
             Ou clique aqui para gerar dados simulados
           </div>
           {hasStudy && data.tema && (
-            <p className="font-semibold text-sm md:text-base mt-4 md:mt-8 mb-4 md:mb-8 text-red-500 p-2 rounded-sm bg-red-50">
+            <p className="font-semibold text-sm md:text-base mt-4 md:mt-8 mb-4 md:mb-8 text-secondary p-2 rounded-sm bg-secondary-light/20">
               Já existe um estudo! Gerar um novo estudo, substituirá o estudo
               atual.
             </p>

@@ -26,15 +26,15 @@ export default function DashboardMetrics() {
       <div className="flex gap-8 justify-center items-start">
         <div className="flex justify-between w-full">
           <div className="flex flex-col w-full gap-1">
-            <div className="bg-slate-200 rounded-full h-5 overflow-hidden">
+            <div className="bg-card-border rounded-full h-5 overflow-hidden">
               <div
-                className={`bg-linear-to-r from-violet-600 to-sky-500 h-5 rounded-full transition-all duration-500`}
+                className={`bg-linear-to-r from-secondary to-primary h-5 rounded-full transition-all duration-500`}
                 style={{
                   width: `${(metrics.xp / metrics.maxXp) * 100}%`,
                 }}
               />
             </div>
-            <p className="text-gray-600 font-semibold text-lg">
+            <p className="text-foreground font-semibold text-lg">
               XP: {metrics.xp}/{metrics.maxXp}
             </p>
           </div>

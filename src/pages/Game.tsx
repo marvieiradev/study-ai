@@ -80,22 +80,22 @@ export default function Game({ studyData }: { studyData: any }) {
     checkAchievements();
   }
 
-  if (!exercise) return <p className="text-white">Sem exercícios</p>;
+  if (!exercise) return <p className="text-foreground">Sem exercícios</p>;
 
   return (
     <>
-      <div className="min-h-screen w-full bg-white text-gray-800 p-6 flex flex-col gap-6 max-w-3xl mx-auto">
+      <div className="min-h-screen w-full bg-default text-foreground-dark p-6 flex flex-col gap-6 max-w-3xl mx-auto">
         <div className="flex justify-between">
           <div className="flex gap-2 items-center">
-            <GoHeartFill className="w-5 h-5 text-red-600" />
-            <span className="text-gray-600 text-lg md:text-xl font-semibold">
+            <GoHeartFill className="w-5 h-5 text-error" />
+            <span className="text-foreground text-lg md:text-xl font-semibold">
               {" "}
               {lives}
             </span>
           </div>
           <div className="flex gap-2 items-center">
-            <FaStar className="w-5 h-5 text-yellow-600" />
-            <span className="text-gray-600 text-lg md:text-xl font-semibold">
+            <FaStar className="w-5 h-5 text-warning" />
+            <span className="text-foreground text-lg md:text-xl font-semibold">
               {" "}
               {score}
             </span>
@@ -105,20 +105,20 @@ export default function Game({ studyData }: { studyData: any }) {
               className="cursor-pointer"
               onClick={() => navigate("/dashboard")}
             >
-              <AiFillCloseCircle className="w-7 h-7 text-gray-600" />
+              <AiFillCloseCircle className="w-7 h-7 text-foreground" />
             </button>
           </div>
         </div>
         <div className="flex flex-col w-full gap-1">
-          <div className="bg-slate-200 rounded-full h-4 overflow-hidden">
+          <div className="bg-card-border rounded-full h-4 overflow-hidden">
             <div
-              className={`bg-linear-to-r from-violet-600 to-sky-500 h-4 rounded-full transition-all duration-500`}
+              className={`bg-linear-to-r from-secondary to-primary h-4 rounded-full transition-all duration-500`}
               style={{
                 width: `${((current + 1) / exercises.length) * 100}%`,
               }}
             />
           </div>
-          <p className="text-gray-600 font-semibold text-md">
+          <p className="text-foreground font-semibold text-md">
             Exercício {current + 1}/{exercises.length}
           </p>
         </div>

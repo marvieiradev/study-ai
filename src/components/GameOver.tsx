@@ -34,13 +34,13 @@ export default function GameOver({
   return (
     <>
       {hasWon ? (
-        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-white p-6 gap-4">
+        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-default p-6 gap-4">
           <div>
-            <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-emerald-500" />
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-success" />
+            <h1 className="text-3xl font-bold text-foreground-dark mb-4">
               Você Venceu!
             </h1>
-            <p className="text-lg text-gray-600">Obrigado por jogar!</p>
+            <p className="text-lg text-foreground">Obrigado por jogar!</p>
             <div className="flex gap-2 mt-2 mb-12">
               <CardMetrics title="XP" style="bg-yellow-500">
                 <FaStar className="h-5 w-5 text-yellow-500" />
@@ -63,13 +63,13 @@ export default function GameOver({
           </GameButton>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-white p-6 gap-4">
+        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-default p-6 gap-4">
           <div>
-            <IoMdClose className="mx-auto mb-4 h-25 w-25 text-red-500" />
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <IoMdClose className="mx-auto mb-4 h-25 w-25 text-error" />
+            <h1 className="text-3xl font-bold text-foreground-dark mb-4">
               Fim de Jogo
             </h1>
-            <p className="text-lg text-gray-600">Obrigado por jogar!</p>
+            <p className="text-lg text-foreground">Obrigado por jogar!</p>
           </div>
           <GameButton action={() => navigate("/dashboard")} type="neutral">
             Sair

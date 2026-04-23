@@ -57,7 +57,7 @@ export function GameModeComplete({
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-lg md:text-xl text-gray-700 leading-relaxed items-center text-center mb-4">
+      <h2 className="text-lg md:text-xl text-foreground leading-relaxed items-center text-center mb-4">
         {parts.map((part: string, index: number) => (
           <span key={index}>
             {part}
@@ -68,8 +68,8 @@ export function GameModeComplete({
                 className={`inline-block align-middle min-w-22.5 px-1 border-b-2 -mt-0.5 cursor-pointer whitespace-nowrap
             ${
               selected[index]
-                ? "text-sky-500 bg-gray-100 rounded-xl border-none"
-                : "text-transparent border-gray-600"
+                ? "text-primary bg-primary-light/40 rounded-xl border-none"
+                : "text-transparent border-foreground"
             }
           `}
               >
@@ -84,7 +84,7 @@ export function GameModeComplete({
           <button
             key={i}
             onClick={() => add(word, i)}
-            className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-sky-500 transition"
+            className="bg-secondary text-default px-3 py-1 rounded hover:bg-primary transition"
           >
             {word}
           </button>

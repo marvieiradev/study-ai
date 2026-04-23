@@ -34,16 +34,16 @@ export function GameModeRespond({
 
   return (
     <>
-      <h2 className="text-lg md:text-xl text-gray-700 mb-4">
+      <h2 className="text-lg md:text-xl text-foreground mb-4">
         {part1}{" "}
-        <span className="inline-block min-w-16 border-b-2 border-gray-700 whitespace-nowrap"></span>{" "}
+        <span className="inline-block min-w-16 border-b-2 border-foreground whitespace-nowrap"></span>{" "}
         {part2}
       </h2>
       <div className="flex flex-col gap-3">
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="p-3 mt-4 rounded bg-gray-50 border-2 border-gray-200 focus:border-sky-500 focus:ring-sky-500 focus:ring-1 outline-none transition"
+          className="p-3 mt-4 rounded bg-default border-2 border-card-border focus:border-primary focus:ring-primary focus:ring-1 outline-none transition"
           placeholder="Digite sua resposta"
         />
         <div className="flex justify-center">
