@@ -1,18 +1,25 @@
-export function Card({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+export function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-full flex flex-col overflow-hidden">
-      <div className="flex-1 overflow-auto bg-card-background border-2 rounded-lg border-card-border p-4 transition overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-        <h2 className="text-lg font-semibold text-foreground-dark mb-2 text-start">
-          {title}
-        </h2>
-        <div className="space-y-2 text-sm text-foreground">{children}</div>
+    <div className="h-full flex flex-1 flex-col overflow-hidden bg-card-background border-2 rounded-lg border-card-border p-4 transition">
+      {children}
+    </div>
+  );
+}
+
+export function CardHeader({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-card-background">
+      <div className="flex justify-between top-0 sticky z-50 text-lg font-semibold text-foreground-dark mb-2 px-2">
+        {children}
       </div>
+    </div>
+  );
+}
+
+export function CardContent({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="overflow-auto overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+      <div className="space-y-2 text-sm text-foreground">{children}</div>
     </div>
   );
 }
