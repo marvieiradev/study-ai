@@ -55,12 +55,13 @@ Exemplo:
 3. COMPLETE (3 lacunas fixas)
 REGRAS OBRIGATÓRIAS:
 - A frase deve ter EXATAMENTE 3 lacunas (___)
-- Sempre 3 respostas
+- a frase deve ter SEMPRE 3 respostas (NÃO PODE HAVER MAIS OU MENOS)
 - As respostas DEVEM estar NA ORDEM CORRETA da frase
 - Cada resposta deve ser UMA palavra
 - As lacunas devem ter no mínimo 2 palavras entre elas para evitar respostas óbvias.
-- Não pode haver menos de 3 lacunas na frase.
+- Não pode haver MENOS OU MAIS de 3 lacunas na frase.
 - Não use artigos (ex: "a", "o", "um") ou números (ex: "1", "2", "3") como resposta
+- As respostas e as lacunas PRECISAM OBRIGATORIAMENTE estra na mesma quantidade, ou seja, 3 lacunas e 3 respostas, NUNCA MAIS NEM MENOS.
 
 Exemplo:
 {
