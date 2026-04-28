@@ -30,8 +30,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
 
   return (
     <>
-      <div className="h-screen flex flex-col bg-foreground-light/5 text-default md:overflow-hidden">
-        <Header />
+      <div className="h-full md:h-screen flex flex-col bg-foreground-light/5 text-default md:overflow-hidden">
+        <div className="sticky top-0 z-99">
+          <Header />
+        </div>
         {studyData && (
           <div className="w-full mx-auto p-4 py-2 mt-1 -mb-3">
             <Card>

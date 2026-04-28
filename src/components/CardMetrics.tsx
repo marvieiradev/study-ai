@@ -1,23 +1,22 @@
 export function CardMetrics({
   title,
+  content,
   children,
-  style,
 }: {
   title: string;
+  content: string;
   children: React.ReactNode;
-  style: string;
 }) {
   return (
-    <div
-      className={`min-w-25 h-17 p-1 pt-1 rounded-xl flex flex-col justify-between gap-1 ${style}`}
-    >
-      <span className="text-center text-default font-semibold text-xs md:text-sm">
-        {title}
-      </span>
-      <div
-        className={`bg-default h-12 rounded-lg text-base md:text-lg font-bold flex items-center justify-center gap-2 px-1`}
-      >
-        {children}
+    <div className="min-w-15 p-1 pt-1 rounded-2xl flex justify-center gap-1 border-2 border-secondary/40 bg-secondary/5">
+      <div className="flex gap-2 items-center">
+        <div className="flex flex-col justify-center text-secondary">
+          <p className="text-sm">{title}</p>
+          <div className="flex justify-baseline items-center gap-2">
+            {children}
+            <p className="text-lg font-semibold">{content}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

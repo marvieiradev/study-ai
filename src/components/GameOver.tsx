@@ -42,19 +42,16 @@ export default function GameOver({
             </h1>
             <p className="text-lg text-foreground">Obrigado por jogar!</p>
             <div className="flex gap-2 mt-2 mb-12">
-              <CardMetrics title="XP" style="bg-yellow-500">
-                <FaStar className="h-5 w-5 text-yellow-500" />
-                <span className="text-yellow-500">{xp}</span>
+              <CardMetrics title="XP" content={`${xp}`}>
+                <FaStar className="h-5 w-5" />
               </CardMetrics>
 
-              <CardMetrics title="Precisão" style="bg-sky-500">
-                <TbTargetArrow className="h-5 w-5 text-sky-500" />
-                <span className="text-sky-500">{precision}%</span>
+              <CardMetrics title="Precisão" content={`${precision}%`}>
+                <TbTargetArrow className="h-5 w-5" />
               </CardMetrics>
 
-              <CardMetrics title="Tempo" style="bg-emerald-500">
-                <IoMdTime className="h-5 w-5 text-emerald-500" />
-                <span className="text-emerald-500">{formatTime(time)}</span>
+              <CardMetrics title="Tempo" content={formatTime(time)}>
+                <IoMdTime className="h-5 w-5" />
               </CardMetrics>
             </div>
           </div>

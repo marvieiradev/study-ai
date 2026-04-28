@@ -17,10 +17,10 @@
 }
 
 @theme {
-  --color-default: oklch(0.97 0.02 264.29);
+  --color-default: oklch(0.9851 0 0);
 
-  --color-card-background: oklch(98.5% 0.002 247.839);
-  --color-card-border: oklch(92.8% 0.006 264.531);
+  --color-card-background: oklch(0.9851 0 0);
+  --color-card-border: oklch(0.9249 0 0);
 
   --color-foreground: oklch(37.3% 0.034 259.733);
   --color-foreground-dark: oklch(27.8% 0.033 256.848);
@@ -65,4 +65,10 @@
 body {
   margin: 0;
   font-family: var(--poppins);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }

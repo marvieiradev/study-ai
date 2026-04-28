@@ -1,6 +1,6 @@
 export function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-full flex flex-1 flex-col overflow-hidden bg-card-background border-2 rounded-lg border-card-border p-4 transition">
+    <div className="h-full flex flex-1 flex-col overflow-hidden bg-card-background border rounded-lg border-card-border p-4 transition shadow-sm shadow-foreground/20">
       {children}
     </div>
   );

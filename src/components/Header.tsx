@@ -10,7 +10,7 @@ export function Header() {
   }
   return (
     <>
-      <header className="sticky top-0 z-50 bg-default text-default shadow-lg flex justify-center items-center p-2">
+      <header className="sticky top-0 z-99 bg-default text-default shadow-lg flex justify-center items-center p-2">
         <div className="mx-auto flex justify-between items-center w-full px-4">
           <div className="flex gap-2">
             <img
