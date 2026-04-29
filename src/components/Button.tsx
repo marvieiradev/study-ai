@@ -20,7 +20,7 @@ export function Button({
         </button>
       ) : (
         <button
-          className={`flex items-center gap-2 mb:gap-4 text-sm md:text-base px-6 py-2 bg-default border-2 border-primary rounded-full text-primary font-medium hover:opacity-80 cursor-pointer ${className}`}
+          className={`flex items-center gap-2 mb:gap-4 text-sm md:text-base px-6 py-2 bg-primary-light/20 border-2 border-primary rounded-full text-primary font-medium hover:opacity-80 cursor-pointer ${className}`}
           {...props}
         >
           {children}

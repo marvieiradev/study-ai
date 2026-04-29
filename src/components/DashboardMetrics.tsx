@@ -24,58 +24,48 @@ export default function DashboardMetrics() {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex flex-col md:flex-row justify-center gap-2">
-        <div className="flex flex-col md:flex-row gap-2">
-          <div className="flex gap-8 justify-center items-start">
-            <div className="flex justify-between w-full">
-              <div className="flex flex-col w-full gap-1">
-                <div className="bg-card-border rounded-full h-5 overflow-hidden">
-                  <div
-                    className={`bg-linear-to-r from-secondary to-primary h-5 rounded-full transition-all duration-500`}
-                    style={{
-                      width: `${(metrics.xp / metrics.maxXp) * 100}%`,
-                    }}
-                  />
-                </div>
-                <p className="text-foreground font-semibold text-lg">
-                  XP: {metrics.xp}/{metrics.maxXp}
-                </p>
-              </div>
-            </div>
+      <div className="flex flex-col md:flex-row justify-around gap-2 w-full">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="">
+            <ProgressBar
+              progress={(metrics.xp / metrics.maxXp) * 100}
+              text={`XP: ${metrics.xp}/${metrics.maxXp}`}
+            />
           </div>
 
           <div className="grid grid-cols-3 gap-2">
             <CardMetrics title="Nível" content={`${metrics.level}`}>
-              <FaStar className="h-5 w-5" />
+              <FaStar className="h-4 w-4" />
             </CardMetrics>
 
             <CardMetrics title="Precisão" content={`${accuracy}%`}>
-              <TbTargetArrow className="h-5 w-5" />
+              <TbTargetArrow className="h-4 w-4" />
             </CardMetrics>
 
             <CardMetrics title="Sequência" content={`${metrics.streak} dias`}>
-              <FaCalendarDays className="h-5 w-5" />
+              <FaCalendarDays className="h-4 w-4" />
             </CardMetrics>
 
             <CardMetrics
               title="Exercícios"
               content={`${metrics.totalExercises}`}
             >
-              <LuNotebookPen className="h-5 w-5" />
+              <LuNotebookPen className="h-4 w-4" />
             </CardMetrics>
 
             <CardMetrics
               title="Sessões"
               content={`${metrics.sessionsCompleted}`}
             >
-              <LuClock4 className="h-5 w-5" />
+              <LuClock4 className="h-4 w-4" />
             </CardMetrics>
 
             <CardMetrics title="Top Score" content={`${metrics.bestScore}`}>
-              <FaTrophy className="h-5 w-5" />
+              <FaTrophy className="h-4 w-4" />
             </CardMetrics>
           </div>
         </div>
+        <div className="text-primary">Gráfico em breve</div>
       </div>
     </div>
   );

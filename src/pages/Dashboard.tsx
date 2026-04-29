@@ -31,14 +31,12 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
   return (
     <>
       <div className="h-full md:h-screen flex flex-col bg-foreground-light/5 text-default md:overflow-hidden">
-        <div className="sticky top-0 z-99">
-          <Header />
-        </div>
+        <Header />
         {studyData && (
           <div className="w-full mx-auto p-4 py-2 mt-1 -mb-3">
             <Card>
               <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0">
-                <h1 className="text-2xl font-bold text-foreground-dark">
+                <h1 className="text-xl font-bold text-foreground-dark">
                   {studyData?.tema ? studyData.tema : "Sem estudos"}
                 </h1>
                 <div className="flex gap-4 mt-2 md:gap-8 md:mt-0">
@@ -62,13 +60,13 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               <Card>
                 <CardHeader>
                   <h1>Resumo Inteligente</h1>
-                  <IoDocumentText className="h-6 w-6" />
+                  <IoDocumentText className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
-                  <p className=" text-foreground flex flex-col gap-1">
+                  <p className=" text-foreground flex flex-col gap-2">
                     {studyData?.resumo.map((item, i) => (
                       <span
-                        className="flex rounded-2xl bg-primary-light/20 text-start p-2"
+                        className="flex rounded-2xl bg-primary-light/10 text-start p-2"
                         key={i}
                       >
                         {item}
@@ -84,7 +82,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               <Card>
                 <CardHeader>
                   <h1>Métricas</h1>
-                  <MdInsights className="h-6 w-6" />
+                  <MdInsights className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <DashboardMetrics />
               </Card>
@@ -94,7 +92,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               <Card>
                 <CardHeader>
                   <h1>Dicas</h1>
-                  <FaLightbulb className="h-6 w-6" />
+                  <FaLightbulb className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-4">
@@ -111,7 +109,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               <Card>
                 <CardHeader>
                   <h1>Insights</h1>
-                  <GiBrain className="h-6 w-6" />
+                  <GiBrain className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-4">

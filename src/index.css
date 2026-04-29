@@ -26,17 +26,17 @@
   --color-foreground-dark: oklch(27.8% 0.033 256.848);
   --color-foreground-light: oklch(55.1% 0.027 264.364);
 
-  --color-primary: oklch(68.5% 0.169 237.323);
-  --color-primary-dark: oklch(50% 0.134 242.749);
-  --color-primary-light: oklch(90.1% 0.058 230.902);
+  --color-primary: oklch(0.5413 0.2466 293.01);
+  --color-primary-dark: oklch(0.4295 0.2466 293.01);
+  --color-primary-light: oklch(0.681 0.2466 293.01);
 
-  --color-secondary: oklch(54.1% 0.281 293.009);
-  --color-secondary-dark: oklch(43.2% 0.232 292.759);
-  --color-secondary-light: oklch(89.4% 0.057 293.283);
+  --color-secondary: oklch(0.6231 0.188 259.81);
+  --color-secondary-dark: oklch(0.4139 0.188 259.81);
+  --color-secondary-light: oklch(0.7849 0.188 259.81);
 
-  --color-variant: oklch(70.5% 0.213 47.604);
-  --color-variant-dark: oklch(55.3% 0.195 38.402);
-  --color-variant-light: oklch(83.7% 0.128 66.29);
+  --color-variant: oklch(0.6959 0.1491 162.48);
+  --color-variant-dark: oklch(0.5148 0.1491 162.48);
+  --color-variant-light: oklch(0.9392 0.1491 162.48);
 
   --color-success: oklch(72.3% 0.219 149.579);
   --color-success-dark: oklch(62.7% 0.194 149.214);
@@ -67,8 +67,10 @@ body {
   font-family: var(--poppins);
 }
 
-.progress-ring__circle {
-  transition: stroke-dashoffset 0.35s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
+.gradient-color {
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
 }
