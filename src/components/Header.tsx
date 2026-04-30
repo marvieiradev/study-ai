@@ -10,8 +10,8 @@ export function Header() {
   }
   return (
     <>
-      <header className="sticky top-0 z-50 bg-default text-default shadow-lg flex justify-center items-center p-2">
-        <div className="mx-auto flex justify-between items-center w-full px-4">
+      <header className="sticky top-0 z-50 bg-default text-default shadow-xs shadow-foreground/20 border border-card-border flex justify-center items-center p-2">
+        <div className="mx-auto flex justify-between items-center w-full px-5">
           <div className="flex gap-2">
             <img
               src="./favicon.svg"
@@ -52,7 +52,6 @@ export function Header() {
           </div>
         </div>
       </header>
-      <div className="h-1 bg-linear-to-r from-secondary to-primary"></div>
     </>
   );
 }

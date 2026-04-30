@@ -16,9 +16,9 @@ export default function GameFeedback({
 
   useEffect(() => {
     if (isCorrect) {
-      setTypeClass("bg-success text-success border-t-4 border-success-light");
+      setTypeClass("bg-success text-success border-t-6 border-success-light");
     } else {
-      setTypeClass("bg-error text-error border-t-4 border-error-light");
+      setTypeClass("bg-error text-error border-t-6 border-error-light");
     }
   }, []);
 
@@ -28,7 +28,7 @@ export default function GameFeedback({
       role="status"
       aria-live="polite"
     >
-      <div className="mx-auto max-w-3xl flex justify-end">
+      <div className="mx-auto w-full flex justify-end">
         <div
           className={`rounded-t-lg p-6 w-full h-60 text-center ${typeClass}`}
         >

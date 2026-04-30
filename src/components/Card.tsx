@@ -1,6 +1,6 @@
 export function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-full flex flex-1 flex-col overflow-hidden bg-card-background border rounded-lg border-card-border p-4 transition shadow-sm shadow-foreground/20">
+    <div className="h-full flex flex-1 flex-col overflow-hidden bg-card-background shadow-xs shadow-foreground/20 border border-card-border rounded-lg p-4 transition">
       {children}
     </div>
   );
@@ -9,7 +9,7 @@ export function Card({ children }: { children: React.ReactNode }) {
 export function CardHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-card-background">
-      <div className="flex justify-between top-0 sticky z-50 text-lg font-semibold text-foreground-dark mb-2 px-2">
+      <div className="flex items-center top-0 sticky z-50 text-lg font-semibold text-foreground-dark mb-4 px-2 gap-2">
         {children}
       </div>
     </div>

@@ -30,23 +30,23 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
 
   return (
     <>
-      <div className="h-full md:h-screen flex flex-col bg-foreground-light/5 text-default md:overflow-hidden">
+      <div className="h-full md:h-screen flex flex-col bg-foreground/5 text-default md:overflow-hidden">
         <Header />
         {studyData && (
-          <div className="w-full mx-auto p-4 py-2 mt-1 -mb-3">
+          <div className="w-full mx-auto px-4 mt-3 -mb-1">
             <Card>
               <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0">
-                <h1 className="text-xl font-bold text-foreground-dark">
+                <h1 className="text-lg font-bold text-foreground-dark mb-4 md:mb-0">
                   {studyData?.tema ? studyData.tema : "Sem estudos"}
                 </h1>
-                <div className="flex gap-4 mt-2 md:gap-8 md:mt-0">
+                <div className="flex gap-4 md:gap-8 md:mt-0">
                   <Button type="outline" onClick={() => setShowGenerate(true)}>
                     Estudar
-                    <FaBook className="h-5 w-5" />
+                    <FaBook className="h-4 w-4" />
                   </Button>
                   <Button type="normal" onClick={() => navigate("/game")}>
                     Praticar
-                    <IoRocketSharp className="h-5 w-5" />
+                    <IoRocketSharp className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
@@ -59,8 +59,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-3">
               <Card>
                 <CardHeader>
+                  <div className="bg-primary/15 p-1 rounded-lg">
+                    <IoDocumentText className="h-5 w-5 text-primary-dark" />
+                  </div>
                   <h1>Resumo Inteligente</h1>
-                  <IoDocumentText className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
                   <p className=" text-foreground flex flex-col gap-2">
@@ -81,8 +83,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-2 md:row-span-1">
               <Card>
                 <CardHeader>
+                  <div className="bg-primary/15 p-1 rounded-lg">
+                    <MdInsights className="h-5 w-5 text-primary-dark" />
+                  </div>
                   <h1>Métricas</h1>
-                  <MdInsights className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <DashboardMetrics />
               </Card>
@@ -91,8 +95,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-2 md:col-start-2">
               <Card>
                 <CardHeader>
+                  <div className="bg-primary/15 p-1 rounded-lg">
+                    <FaLightbulb className="h-5 w-5 text-primary-dark" />
+                  </div>
                   <h1>Dicas</h1>
-                  <FaLightbulb className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-4">
@@ -108,8 +114,10 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-2 md:col-start-3">
               <Card>
                 <CardHeader>
+                  <div className="bg-primary/15 p-1 rounded-lg">
+                    <GiBrain className="h-5 w-5 text-primary-dark" />
+                  </div>
                   <h1>Insights</h1>
-                  <GiBrain className="h-5 w-5 text-primary" />
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-4">

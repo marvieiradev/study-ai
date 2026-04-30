@@ -33,7 +33,7 @@ export function GameButton({
     <button
       onClick={action}
       disabled={disabled}
-      className={`flex gap-2 justify-center items-center text-default p-2 rounded mt-4 w-full max-w-50 transition-all duration-500 ${typeClass} ${
+      className={`flex gap-2 justify-center items-center text-default p-2 rounded-full mt-4 md:mt-12 w-full max-w-50 transition-all duration-500 ${typeClass} ${
         disabled
           ? "opacity-25 bg-foreground-light cursor-not-allowed"
           : "cursor-pointer"

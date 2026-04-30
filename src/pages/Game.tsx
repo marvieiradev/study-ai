@@ -84,87 +84,89 @@ export default function Game({ studyData }: { studyData: any }) {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-default text-foreground-dark p-6 flex flex-col gap-6 max-w-3xl mx-auto">
-        <div className="flex justify-between">
-          <div className="flex gap-2 items-center">
-            <GoHeartFill className="w-5 h-5 text-error" />
-            <span className="text-foreground text-lg md:text-xl font-semibold">
-              {" "}
-              {lives}
-            </span>
+      <div className="flex w-full h-full items-center justify-center bg-foreground/5 p-4">
+        <div className="min-h-screen w-full max-w-3xl bg-card-background text-foreground-dark p-6 flex flex-col gap-6 mx-auto rounded-lg">
+          <div className="flex justify-between">
+            <div className="flex gap-2 items-center">
+              <GoHeartFill className="w-5 h-5 text-error" />
+              <span className="text-foreground text-lg md:text-xl font-semibold">
+                {" "}
+                {lives}
+              </span>
+            </div>
+            <div className="flex gap-2 items-center">
+              <FaStar className="w-5 h-5 text-warning" />
+              <span className="text-foreground text-lg md:text-xl font-semibold">
+                {" "}
+                {score}
+              </span>
+            </div>
+            <div className="flex gap-2 items-center">
+              <button
+                className="cursor-pointer"
+                onClick={() => navigate("/dashboard")}
+              >
+                <AiFillCloseCircle className="h-8 w-8 text-foreground hover:text-foreground-dark cursor-pointer" />
+              </button>
+            </div>
           </div>
-          <div className="flex gap-2 items-center">
-            <FaStar className="w-5 h-5 text-warning" />
-            <span className="text-foreground text-lg md:text-xl font-semibold">
-              {" "}
-              {score}
-            </span>
+          <div className="flex flex-col w-full gap-1">
+            <div className="bg-card-border rounded-full h-4 overflow-hidden">
+              <div
+                className={`bg-linear-to-r from-secondary to-primary h-4 rounded-full transition-all duration-500`}
+                style={{
+                  width: `${((current + 1) / exercises.length) * 100}%`,
+                }}
+              />
+            </div>
+            <p className="text-foreground font-semibold text-md">
+              Exercício {current + 1}/{exercises.length}
+            </p>
           </div>
-          <div className="flex gap-2 items-center ">
-            <button
-              className="cursor-pointer"
-              onClick={() => navigate("/dashboard")}
-            >
-              <AiFillCloseCircle className="w-7 h-7 text-foreground" />
-            </button>
+
+          <div
+            className={`${
+              showFeedback ? "blur-[1px] opacity-40 pointer-events-none" : ""
+            }`}
+          >
+            {exercise.type === "quiz" && (
+              <GameModeQuiz
+                exercise={exercise}
+                onCorrect={handleCorrect}
+                onWrong={handleWrong}
+              />
+            )}
+
+            {exercise.type === "input" && (
+              <GameModeRespond
+                exercise={exercise}
+                onCorrect={handleCorrect}
+                onWrong={handleWrong}
+              />
+            )}
+
+            {exercise.type === "complete" && (
+              <GameModeComplete
+                exercise={exercise}
+                onCorrect={handleCorrect}
+                onWrong={handleWrong}
+              />
+            )}
           </div>
+          <GameFeedback
+            open={showFeedback}
+            onContinue={handleNext}
+            isCorrect={isCorrect}
+          />
+
+          <GameOver
+            open={showGameOver}
+            result={resultGameOver}
+            precision={Math.round((score / (exercises.length * 10)) * 100)}
+            time={seconds}
+            xp={score}
+          />
         </div>
-        <div className="flex flex-col w-full gap-1">
-          <div className="bg-card-border rounded-full h-4 overflow-hidden">
-            <div
-              className={`bg-linear-to-r from-secondary to-primary h-4 rounded-full transition-all duration-500`}
-              style={{
-                width: `${((current + 1) / exercises.length) * 100}%`,
-              }}
-            />
-          </div>
-          <p className="text-foreground font-semibold text-md">
-            Exercício {current + 1}/{exercises.length}
-          </p>
-        </div>
-
-        <div
-          className={`${
-            showFeedback ? "blur-[1px] opacity-40 pointer-events-none" : ""
-          }`}
-        >
-          {exercise.type === "quiz" && (
-            <GameModeQuiz
-              exercise={exercise}
-              onCorrect={handleCorrect}
-              onWrong={handleWrong}
-            />
-          )}
-
-          {exercise.type === "input" && (
-            <GameModeRespond
-              exercise={exercise}
-              onCorrect={handleCorrect}
-              onWrong={handleWrong}
-            />
-          )}
-
-          {exercise.type === "complete" && (
-            <GameModeComplete
-              exercise={exercise}
-              onCorrect={handleCorrect}
-              onWrong={handleWrong}
-            />
-          )}
-        </div>
-        <GameFeedback
-          open={showFeedback}
-          onContinue={handleNext}
-          isCorrect={isCorrect}
-        />
-
-        <GameOver
-          open={showGameOver}
-          result={resultGameOver}
-          precision={Math.round((score / (exercises.length * 10)) * 100)}
-          time={seconds}
-          xp={score}
-        />
       </div>
     </>
   );

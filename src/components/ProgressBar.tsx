@@ -15,7 +15,7 @@ export function ProgressBar({
         <div className="flex flex-col w-full gap-1">
           <div className="bg-card-border rounded-full h-full">
             <div
-              className={`gradient-color h-5 rounded-full transition-all duration-500`}
+              className={`bg-linear-to-r from-primary to-primary-accent h-5 rounded-full transition-all duration-500`}
               style={{
                 width: `${validProgress}%`,
               }}

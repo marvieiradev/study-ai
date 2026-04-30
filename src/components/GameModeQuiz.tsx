@@ -27,9 +27,9 @@ export function GameModeQuiz({
           <button
             key={i}
             onClick={() => setSelected(opt)}
-            className={` border-2 border-primary p-3 rounded-2xl hover:border-secondary transition-all duration-500 text-center cursor-pointer ${
+            className={` border-2 border-primary-accent p-3 rounded-2xl hover:bg-primary-accent hover:text-default transition-all duration-500 text-center cursor-pointer ${
               selected === opt
-                ? "bg-secondary text-default border-secondary"
+                ? "bg-primary-accent text-default border-primary-accent"
                 : "bg-default text-foreground"
             }`}
           >

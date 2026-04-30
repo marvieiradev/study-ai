@@ -26,7 +26,7 @@ export function Loading({ open }: { open: boolean }) {
 
   return (
     <>
-      <div className="w-full h-full bg-card-background/90 fixed inset-x-0 z-50 p-5">
+      <div className="w-full h-full bg-foreground-dark fixed inset-x-0 z-50 p-5">
         <div className="flex justify-center items-center h-full w-full">
           <div className="h-xl w-xl flex flex-col items-center bg-card-background border-4 border-card-border rounded-2xl text-foreground-dark p-4 inset-x-0 z-50">
             <div className="justify-center items-center w-full flex flex-col gap-6 mt-8">
