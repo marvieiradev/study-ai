@@ -34,7 +34,7 @@ export function GameModeRespond({
 
   return (
     <>
-      <h2 className="text-lg md:text-xl text-foreground mb-4">
+      <h2 className="text-md md:text-lg text-foreground mb-4">
         {part1}{" "}
         <span className="inline-block min-w-16 border-b-2 border-foreground whitespace-nowrap"></span>{" "}
         {part2}
@@ -43,7 +43,7 @@ export function GameModeRespond({
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="p-3 mt-4 rounded bg-default border-2 border-card-border focus:border-primary focus:ring-primary focus:ring-1 outline-none transition"
+          className="p-2 mt-4 rounded-full bg-card-border/50 border-2 border-card-border focus:border-primary outline-none transition text-sm md:text-md"
           placeholder="Digite sua resposta"
         />
         <div className="flex justify-center">

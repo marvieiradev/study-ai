@@ -31,13 +31,10 @@
   --color-primary-dark: oklch(0.4362 0.2757 280.9);
   --color-primary-light: oklch(0.7685 0.2757 280.9);
 
-  --color-secondary: oklch(0.6231 0.188 259.81);
-  --color-secondary-dark: oklch(0.4139 0.188 259.81);
-  --color-secondary-light: oklch(0.7849 0.188 259.81);
-
-  --color-variant: oklch(0.6959 0.1491 162.48);
-  --color-variant-dark: oklch(0.5148 0.1491 162.48);
-  --color-variant-light: oklch(0.9392 0.1491 162.48);
+  --color-secondary: oklch(62.3% 0.214 259.815);
+  --color-secondary-accent: oklch(68.5% 0.169 237.323);
+  --color-secondary-dark: oklch(48.8% 0.243 264.376);
+  --color-secondary-light: oklch(80.9% 0.105 251.813);
 
   --color-success: oklch(72.3% 0.219 149.579);
   --color-success-dark: oklch(62.7% 0.194 149.214);
@@ -66,4 +63,10 @@
 body {
   margin: 0;
   font-family: var(--poppins);
+}
+
+.home {
+  background-image: url(../public/home.webp);
+  background-position: center;
+  background-size: cover;
 }

@@ -8,10 +8,10 @@ export function Loading({ open }: { open: boolean }) {
   const [index, setIndex] = useState(0);
 
   const components = [
-    <GiBrain className="w-18 h-18 text-xl md:text-3xl  text-secondary" />,
-    <MdLaptopChromebook className="w-18 h-18 text-xl md:text-3xl  text-primary" />,
-    <FaMicrochip className="w-18 h-18 text-xl md:text-3xl  text-secondary" />,
-    <IoSparkles className="w-18 h-18 text-xl md:text-3xl  text-primary" />,
+    <GiBrain className="w-18 h-18 text-xl md:text-3xl  text-primary" />,
+    <MdLaptopChromebook className="w-18 h-18 text-xl md:text-3xl  text-secondary" />,
+    <FaMicrochip className="w-18 h-18 text-xl md:text-3xl  text-primary-accent" />,
+    <IoSparkles className="w-18 h-18 text-xl md:text-3xl  text-secondary-accent" />,
   ];
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function Loading({ open }: { open: boolean }) {
     <>
       <div className="w-full h-full bg-foreground-dark fixed inset-x-0 z-50 p-5">
         <div className="flex justify-center items-center h-full w-full">
-          <div className="h-xl w-xl flex flex-col items-center bg-card-background border-4 border-card-border rounded-2xl text-foreground-dark p-4 inset-x-0 z-50">
+          <div className="h-xl w-xl flex flex-col items-center bg-card-background border-4 rounded-2xl text-foreground-dark p-4 inset-x-0 z-50">
             <div className="justify-center items-center w-full flex flex-col gap-6 mt-8">
               <div className="flex gap-2 items-center justify-center max-w-5xl mb-8">
                 <div className="flex flex-col gap-4 items-center">

@@ -28,7 +28,7 @@ export default function GameFeedback({
       role="status"
       aria-live="polite"
     >
-      <div className="mx-auto w-full flex justify-end">
+      <div className="mx-auto w-full max-w-3xl flex justify-end">
         <div
           className={`rounded-t-lg p-6 w-full h-60 text-center ${typeClass}`}
         >

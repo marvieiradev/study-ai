@@ -19,7 +19,7 @@ export function GameModeQuiz({
   }
   return (
     <>
-      <h2 className="text-lg md:text-xl text-foreground mb-4">
+      <h2 className="text-md md:text-lg text-foreground mb-4">
         {exercise.question}
       </h2>
       <div className="flex flex-col gap-4">
@@ -27,7 +27,7 @@ export function GameModeQuiz({
           <button
             key={i}
             onClick={() => setSelected(opt)}
-            className={` border-2 border-primary-accent p-3 rounded-2xl hover:bg-primary-accent hover:text-default transition-all duration-500 text-center cursor-pointer ${
+            className={`border-2 border-primary-accent p-2 rounded-2xl hover:bg-primary-accent hover:text-default transition-all duration-500 text-center cursor-pointer text-sm md:text-md ${
               selected === opt
                 ? "bg-primary-accent text-default border-primary-accent"
                 : "bg-default text-foreground"

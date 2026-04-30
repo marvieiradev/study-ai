@@ -35,11 +35,11 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
         {studyData && (
           <div className="w-full mx-auto px-4 mt-3 -mb-1">
             <Card>
-              <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0">
+              <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0 px-2">
                 <h1 className="text-lg font-bold text-foreground-dark mb-4 md:mb-0">
                   {studyData?.tema ? studyData.tema : "Sem estudos"}
                 </h1>
-                <div className="flex gap-4 md:gap-8 md:mt-0">
+                <div className="flex gap-4 md:gap-6 md:mt-0">
                   <Button type="outline" onClick={() => setShowGenerate(true)}>
                     Estudar
                     <FaBook className="h-4 w-4" />
@@ -59,8 +59,8 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-3">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary/15 p-1 rounded-lg">
-                    <IoDocumentText className="h-5 w-5 text-primary-dark" />
+                  <div className="bg-primary-light/25 p-1 rounded-lg">
+                    <IoDocumentText className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Resumo Inteligente</h1>
                 </CardHeader>
@@ -83,8 +83,8 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-2 md:row-span-1">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary/15 p-1 rounded-lg">
-                    <MdInsights className="h-5 w-5 text-primary-dark" />
+                  <div className="bg-primary-light/25 p-1 rounded-lg">
+                    <MdInsights className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Métricas</h1>
                 </CardHeader>
@@ -95,8 +95,8 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-2 md:col-start-2">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary/15 p-1 rounded-lg">
-                    <FaLightbulb className="h-5 w-5 text-primary-dark" />
+                  <div className="bg-primary-light/25 p-1 rounded-lg">
+                    <FaLightbulb className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Dicas</h1>
                 </CardHeader>
@@ -114,8 +114,8 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="md:col-span-1 md:row-span-2 md:col-start-3">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary/15 p-1 rounded-lg">
-                    <GiBrain className="h-5 w-5 text-primary-dark" />
+                  <div className="bg-primary-light/25 p-1 rounded-lg">
+                    <GiBrain className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Insights</h1>
                 </CardHeader>

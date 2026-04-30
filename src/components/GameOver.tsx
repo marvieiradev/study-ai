@@ -5,14 +5,12 @@ import { CardMetrics } from "./CardMetrics";
 import { FaStar } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
 
-export default function GameOver({
-  open,
+export function GameOver({
   result,
   time,
   precision,
   xp,
 }: {
-  open: boolean;
   result: boolean;
   time: number;
   precision: number;
@@ -20,7 +18,6 @@ export default function GameOver({
 }) {
   const hasWon = result ? true : false;
   const navigate = useNavigate();
-  if (!open) return null;
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -34,40 +31,36 @@ export default function GameOver({
   return (
     <>
       {hasWon ? (
-        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-default p-6 gap-4">
-          <div>
-            <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-success" />
-            <h1 className="text-3xl font-bold text-foreground-dark mb-4">
-              Você Venceu!
-            </h1>
-            <p className="text-lg text-foreground">Obrigado por jogar!</p>
-            <div className="flex gap-2 mt-2 mb-12">
-              <CardMetrics title="XP" content={`${xp}`}>
-                <FaStar className="h-5 w-5" />
-              </CardMetrics>
+        <div className="flex flex-col items-center justify-around h-full gap-4">
+          <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-success" />
+          <h1 className="text-3xl font-bold text-foreground-dark mb-4">
+            Você Venceu!
+          </h1>
+          <p className="text-lg text-foreground">Obrigado por jogar!</p>
+          <div className="flex gap-2 mt-2 mb-12">
+            <CardMetrics title="XP" content={`${xp}`}>
+              <FaStar className="h-5 w-5" />
+            </CardMetrics>
 
-              <CardMetrics title="Precisão" content={`${precision}%`}>
-                <TbTargetArrow className="h-5 w-5" />
-              </CardMetrics>
+            <CardMetrics title="Precisão" content={`${precision}%`}>
+              <TbTargetArrow className="h-5 w-5" />
+            </CardMetrics>
 
-              <CardMetrics title="Tempo" content={formatTime(time)}>
-                <IoMdTime className="h-5 w-5" />
-              </CardMetrics>
-            </div>
+            <CardMetrics title="Tempo" content={formatTime(time)}>
+              <IoMdTime className="h-5 w-5" />
+            </CardMetrics>
           </div>
           <GameButton action={() => navigate("/dashboard")} type="neutral">
             Concluir
           </GameButton>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-around h-full fixed inset-x-0 z-50 bg-default p-6 gap-4">
-          <div>
-            <IoMdClose className="mx-auto mb-4 h-25 w-25 text-error" />
-            <h1 className="text-3xl font-bold text-foreground-dark mb-4">
-              Fim de Jogo
-            </h1>
-            <p className="text-lg text-foreground">Obrigado por jogar!</p>
-          </div>
+        <div className="flex flex-col items-center justify-around h-full gap-4">
+          <IoMdClose className="mx-auto mb-4 mt-8 h-25 w-25 text-error" />
+          <h1 className="text-3xl font-bold text-foreground-dark mb-4">
+            Fim de Jogo
+          </h1>
+          <p className="text-lg text-foreground">Obrigado por jogar!</p>
           <GameButton action={() => navigate("/dashboard")} type="neutral">
             Sair
           </GameButton>

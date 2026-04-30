@@ -58,7 +58,7 @@ export function GameModeComplete({
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-lg md:text-xl text-foreground leading-relaxed items-center text-center mb-4">
+      <h2 className="text-md md:text-lg text-foreground leading-relaxed items-center text-center mb-4">
         {parts.map((part: string, index: number) => (
           <span key={index}>
             {part}
@@ -85,7 +85,7 @@ export function GameModeComplete({
           <button
             key={i}
             onClick={() => add(word, i)}
-            className="bg-primary-accent text-default px-3 py-1 rounded-full hover:bg-primary-dark transition"
+            className="bg-primary-accent text-default px-3 py-1 rounded-full hover:bg-primary-dark transition text-sm md:text-md cursor-pointer"
           >
             {word}
           </button>

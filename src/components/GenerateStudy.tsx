@@ -76,7 +76,7 @@ export function GenerateStudy({
             <div className="flex flex-col h-full justify-around items-center w-full gap-6">
               <div className="max-w-7xl justify-center items-center w-full flex flex-col gap-6">
                 <div className="gap-2 items-center justify-center max-w-4xl mb-2 md:mb-8">
-                  <h1 className="text-xl md:text-3xl mb-4 bg-clip-text text-transparent bg-linear-to-r from-primary to-primary-accent font-bold">
+                  <h1 className="text-xl md:text-3xl mb-4 bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary font-bold">
                     Tudo pronto para começar seu aprendizado?
                   </h1>
                   <h2 className="text-base md:text-lg text-foreground">
@@ -85,7 +85,7 @@ export function GenerateStudy({
                   </h2>
                   <h2 className="text-base md:text-lg text-foreground">
                     Depois, clique em{" "}
-                    <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-primary-accent font-bold">
+                    <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary font-bold">
                       Gerar Estudo
                     </span>{" "}
                     para que nossa inteligência crie seu roteiro personalizado
@@ -108,13 +108,13 @@ export function GenerateStudy({
               </div>
               <div>
                 <div
-                  className="text-sm md:text-base cursor-pointer mt-4 md:mt-8 text-decoration-line: underline text-primary"
+                  className="text-sm md:text-base cursor-pointer mt-4 md:mt-8 text-decoration-line: underline text-secondary"
                   onClick={generateTestData}
                 >
                   Ou clique aqui para gerar dados simulados
                 </div>
                 {hasStudy && data.tema && (
-                  <p className="font-semibold text-sm md:text-base mt-4 md:mt-8 mb-4 md:mb-8 text-foreground p-2 rounded-sm bg-secondary-light/20">
+                  <p className="font-semibold text-sm md:text-base mt-4 md:mt-8 mb-4 md:mb-8 text-foreground p-2 rounded-sm bg-error-light/20">
                     Já existe um estudo! Gerar um novo estudo, substituirá o
                     estudo atual.
                   </p>

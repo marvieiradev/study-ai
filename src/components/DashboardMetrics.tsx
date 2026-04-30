@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { getMetrics } from "../services/metrics";
 import { CardMetrics } from "./CardMetrics";
 import { LuClock4, LuNotebookPen } from "react-icons/lu";
-import { FaTrophy } from "react-icons/fa";
-import { FaCalendarDays, FaStar } from "react-icons/fa6";
+import { FaRegCalendarAlt, FaTrophy } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 import { TbTargetArrow } from "react-icons/tb";
 import { ProgressBar } from "./ProgressBar";
 
@@ -35,33 +35,45 @@ export default function DashboardMetrics() {
 
           <div className="grid grid-cols-3 gap-2">
             <CardMetrics title="Nível" content={`${metrics.level}`}>
-              <FaStar className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <FaStar className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
 
             <CardMetrics title="Precisão" content={`${accuracy}%`}>
-              <TbTargetArrow className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <TbTargetArrow className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
 
             <CardMetrics title="Sequência" content={`${metrics.streak} dias`}>
-              <FaCalendarDays className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <FaRegCalendarAlt className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
 
             <CardMetrics
               title="Exercícios"
               content={`${metrics.totalExercises}`}
             >
-              <LuNotebookPen className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <LuNotebookPen className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
 
             <CardMetrics
               title="Sessões"
               content={`${metrics.sessionsCompleted}`}
             >
-              <LuClock4 className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <LuClock4 className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
 
             <CardMetrics title="Top Score" content={`${metrics.bestScore}`}>
-              <FaTrophy className="h-4 w-4" />
+              <div className="rounded-full bg-primary p-1">
+                <FaTrophy className="h-3 w-3 text-default" />
+              </div>
             </CardMetrics>
           </div>
         </div>
