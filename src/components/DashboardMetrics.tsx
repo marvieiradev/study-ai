@@ -35,19 +35,19 @@ export default function DashboardMetrics() {
 
           <div className="grid grid-cols-3 gap-2">
             <CardMetrics title="Nível" content={`${metrics.level}`}>
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <FaStar className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>
 
             <CardMetrics title="Precisão" content={`${accuracy}%`}>
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <TbTargetArrow className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>
 
             <CardMetrics title="Sequência" content={`${metrics.streak} dias`}>
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <FaRegCalendarAlt className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>
@@ -56,7 +56,7 @@ export default function DashboardMetrics() {
               title="Exercícios"
               content={`${metrics.totalExercises}`}
             >
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <LuNotebookPen className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>
@@ -65,13 +65,13 @@ export default function DashboardMetrics() {
               title="Sessões"
               content={`${metrics.sessionsCompleted}`}
             >
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <LuClock4 className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>
 
             <CardMetrics title="Top Score" content={`${metrics.bestScore}`}>
-              <div className="rounded-full bg-primary p-1">
+              <div className="rounded-full bg-secondary p-1">
                 <FaTrophy className="h-3 w-3 text-default" />
               </div>
             </CardMetrics>

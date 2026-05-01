@@ -8,9 +8,9 @@ export function CardMetrics({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-w-20 p-1 pt-1 rounded-2xl flex justify-center gap-1 bg-primary-light/25">
+    <div className="min-w-20 md:min-w-22 p-1 pt-1 rounded-2xl flex justify-center gap-1 bg-primary-light/25">
       <div className="flex gap-2 items-center">
-        <div className="flex flex-col justify-center text-primary">
+        <div className="flex flex-col justify-center text-primary-accent">
           <span className="text-xs text-shadow-xs text-shadow-primary-light">
             {title}
           </span>
