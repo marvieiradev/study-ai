@@ -30,7 +30,7 @@ export default function GameFeedback({
     >
       <div className="mx-auto w-full max-w-3xl flex justify-end">
         <div
-          className={`rounded-t-lg p-6 w-full h-60 text-center ${typeClass}`}
+          className={`rounded-t-xl p-6 w-full h-60 text-center ${typeClass}`}
         >
           <div>
             {isCorrect ? (

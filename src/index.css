@@ -65,8 +65,27 @@ body {
   font-family: var(--poppins);
 }
 
+.textarea {
+  resize: none;
+}
+
 .home {
-  background-image: url(../public/home.webp);
+  background-image: url(/home.webp);
   background-position: center;
   background-size: cover;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
 }

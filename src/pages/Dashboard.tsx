@@ -32,27 +32,31 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
     <>
       <div className="h-full md:h-screen flex flex-col bg-foreground/5 text-default md:overflow-hidden">
         <Header />
-        {studyData && (
-          <div className="w-full mx-auto px-4 mt-3 -mb-1">
-            <Card>
-              <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0 px-2">
-                <h1 className="text-lg font-bold text-foreground-dark mb-4 md:mb-0">
-                  {studyData?.tema ? studyData.tema : "Sem estudos"}
-                </h1>
-                <div className="flex gap-4 md:gap-6 md:mt-0">
-                  <Button type="outline" onClick={() => setShowGenerate(true)}>
-                    Estudar
-                    <FaBook className="h-4 w-4" />
-                  </Button>
-                  <Button type="normal" onClick={() => navigate("/game")}>
+        <div className="w-full mx-auto px-4 mt-3 -mb-1">
+          <Card>
+            <div className="flex flex-col md:flex-row justify-between items-center md:shrink-0 px-2">
+              <h1 className="text-lg font-bold text-foreground-dark mb-4 md:mb-0">
+                {studyData?.tema ? studyData.tema : "Sem estudos"}
+              </h1>
+              <div className="flex gap-4 md:gap-6 md:mt-0">
+                <Button type="outline" onClick={() => setShowGenerate(true)}>
+                  Estudar
+                  <FaBook className="h-4 w-4" />
+                </Button>
+                {studyData && (
+                  <Button
+                    type="normal"
+                    onClick={() => navigate("/game")}
+                    disabled={!studyData}
+                  >
                     Praticar
                     <IoRocketSharp className="h-4 w-4" />
                   </Button>
-                </div>
+                )}
               </div>
-            </Card>
-          </div>
-        )}
+            </div>
+          </Card>
+        </div>
 
         <div className="md:flex-1 md:min-h-0 mx-auto w-full p-4">
           <div className="h-full grid gap-3 grid-cols-1 md:auto-rows-fr md:grid-cols-3 md:grid-rows-3">
