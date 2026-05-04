@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoExitOutline, IoTrophySharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +10,12 @@ export function Header() {
     sessionStorage.clear();
     navigate("/");
   }
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
+
   return (
     <>
-      <header className="sticky top-0 z-99 bg-default text-default shadow-xs shadow-foreground/20 border border-card-border flex justify-center items-center p-2">
+      <header className="sticky top-0 z-60 bg-default text-default shadow-xs shadow-foreground/20 flex justify-center items-center p-2">
         <div className="mx-auto flex justify-between items-center w-full px-5">
           <div className="flex gap-2">
             <img
@@ -24,12 +29,42 @@ export function Header() {
           </div>
 
           <div className="flex md:hidden">
-            <button
-              className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center py-2 px-4 cursor-pointer hover:text-foreground-dark"
-              onClick={() => console.log("Teste Mobile")}
-            >
-              <GiHamburgerMenu className="h- w-4" />
-            </button>
+            <div>
+              <button
+                className=" bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center py-2 px-4 cursor-pointer hover:text-foreground-dark"
+                onClick={handleMenuClick}
+              >
+                {menuIsOpen ? (
+                  <AiOutlineClose className="h-4 w-4" />
+                ) : (
+                  <GiHamburgerMenu className="h-4 w-4" />
+                )}
+              </button>
+              {menuIsOpen && (
+                <div
+                  className="z-50 absolute bg-foreground-dark/80 flex flex-col mt-2 min-w-full h-screen left-0"
+                  onMouseLeave={() => setMenuIsOpen(false)}
+                >
+                  <div className="bg-card-background flex flex-col gap-4 items-center justify-center w-full p-4">
+                    <button
+                      className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mt-2"
+                      onClick={() => console.log("Teste")}
+                    >
+                      Conquistas
+                      <IoTrophySharp className="h-4 w-4" />
+                    </button>
+
+                    <button
+                      className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mb-2"
+                      onClick={exit}
+                    >
+                      Sair
+                      <IoExitOutline className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           <div className="hidden md:flex">
             <div className="flex gap-4">
