@@ -83,10 +83,10 @@ export default function Game({ studyData }: { studyData: any }) {
   if (!exercise) return <p className="text-foreground">Sem exercícios</p>;
 
   return (
-    <div className="flex w-full h-screen items-center justify-center bg-foreground/5 p-4">
-      <div className="min-h-screen w-full max-w-3xl bg-card-background text-foreground-dark p-6 flex flex-col gap-6 mx-auto rounded-lg">
+    <div className="flex w-full h-screen items-center justify-center bg-foreground/5">
+      <div className="h-full min-h-screen w-full max-w-3xl flex p-2">
         {!showGameOver ? (
-          <>
+          <div className="flex flex-col gap-6 h-full bg-card-background text-foreground-dark p-6 rounded-xl w-full">
             <div className="flex justify-between">
               <div className="flex gap-2 items-center">
                 <GoHeartFill className="w-5 h-5 text-error" />
@@ -159,7 +159,7 @@ export default function Game({ studyData }: { studyData: any }) {
               onContinue={handleNext}
               isCorrect={isCorrect}
             />
-          </>
+          </div>
         ) : (
           <GameOver
             result={resultGameOver}

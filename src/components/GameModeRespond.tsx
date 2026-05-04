@@ -33,7 +33,7 @@ export function GameModeRespond({
   }
 
   return (
-    <>
+    <div>
       <h2 className="text-md md:text-lg text-foreground mb-4">
         {part1}{" "}
         <span className="inline-block min-w-16 border-b-2 border-foreground whitespace-nowrap"></span>{" "}
@@ -53,6 +53,6 @@ export function GameModeRespond({
           </GameButton>
         </div>
       </div>
-    </>
+    </div>
   );
 }

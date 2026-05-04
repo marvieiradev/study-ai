@@ -29,9 +29,9 @@ export function GameOver({
   };
 
   return (
-    <>
+    <div className="w-full">
       {hasWon ? (
-        <div className="flex flex-col items-center justify-around h-full gap-4">
+        <div className="flex flex-col gap-6 h-full bg-success-light/15 text-foreground-dark p-6 rounded-xl w-full max-w-3xl mx-auto items-center justify-around">
           <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-success" />
           <h1 className="text-3xl font-bold text-foreground-dark mb-4">
             Você Venceu!
@@ -55,7 +55,7 @@ export function GameOver({
           </GameButton>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-around h-full gap-4">
+        <div className="flex flex-col gap-6 h-full bg-error-light/15 text-foreground-dark p-6 rounded-xl w-full max-w-3xl mx-auto items-center justify-around">
           <IoMdClose className="mx-auto mb-4 mt-8 h-25 w-25 text-error" />
           <h1 className="text-3xl font-bold text-foreground-dark mb-4">
             Fim de Jogo
@@ -66,6 +66,6 @@ export function GameOver({
           </GameButton>
         </div>
       )}
-    </>
+    </div>
   );
 }
