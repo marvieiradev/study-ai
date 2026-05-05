@@ -61,7 +61,7 @@ export default function Game({ studyData }: { studyData: any }) {
   function handleCorrect() {
     setIsCorrect(true);
     setScore(score + 10);
-    updateAfterAnswer(true);
+    updateAfterAnswer(true, exercise.type);
     checkAchievements();
     setIsCorrect(true);
     setShowFeedback(true);
@@ -76,7 +76,7 @@ export default function Game({ studyData }: { studyData: any }) {
       setLives(3);
       setScore(0);
     }
-    updateAfterAnswer(false);
+    updateAfterAnswer(false, exercise.type);
     checkAchievements();
   }
 

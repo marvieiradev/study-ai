@@ -11,6 +11,9 @@ export const defaultMetrics = {
   bestScore: 0,
   streak: 0,
   lastStudyDate: null,
+  modeQuiz: 0,
+  modeComplete: 0,
+  modeRespond: 0,
 };
 
 export function getMetrics() {
@@ -22,14 +25,6 @@ export function saveMetrics(metrics: any) {
   localStorage.setItem(METRICS_KEY, JSON.stringify(metrics));
 }
 
-/*export function calculateLevel(xp: number) {
-  if (xp < 100) return 1;
-  if (xp < 300) return 2;
-  if (xp < 600) return 3;
-  if (xp < 1000) return 4;
-  return 5;
-}*/
-
 export function calculateLevelProgress(xp: number) {
   if (xp < 300) return { level: 1, maxXp: 300 };
   if (xp < 500) return { level: 2, maxXp: 500 };
@@ -38,7 +33,7 @@ export function calculateLevelProgress(xp: number) {
   return { level: 5, maxXp: 5000 };
 }
 
-export function updateAfterAnswer(isCorrect: any) {
+export function updateAfterAnswer(isCorrect: any, type: string) {
   const metrics = getMetrics();
 
   metrics.totalExercises += 1;
@@ -46,6 +41,18 @@ export function updateAfterAnswer(isCorrect: any) {
   if (isCorrect) {
     metrics.correctAnswers += 1;
     metrics.xp += 10;
+
+    switch (type) {
+      case "quiz":
+        metrics.modeQuiz += 1;
+        break;
+      case "complete":
+        metrics.modeComplete += 1;
+        break;
+      case "input":
+        metrics.modeRespond += 1;
+        break;
+    }
   } else {
     metrics.wrongAnswers += 1;
     metrics.xp += 5;
