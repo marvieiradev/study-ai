@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoExitOutline, IoTrophySharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { Achievements } from "./Achievements";
 
 export function Header() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export function Header() {
     navigate("/");
   }
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [showAchievements, setShowAchievements] = useState(false);
   const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
 
   return (
@@ -19,12 +21,12 @@ export function Header() {
         <div className="mx-auto flex justify-between items-center w-full px-5">
           <div className="flex gap-2">
             <img
-              src="./favicon.svg"
+              src="./icon.svg"
               alt="Logo"
-              className="h-8 w-8 mr-2 inline-block"
+              className="h-8 w-8 mr-1 inline-block"
             />
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-secondary to-primary">
-              Study AI
+              Study.AI
             </h1>
           </div>
 
@@ -48,7 +50,7 @@ export function Header() {
                   <div className="bg-card-background flex flex-col gap-4 items-center justify-center w-full p-4">
                     <button
                       className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mt-2"
-                      onClick={() => console.log("Teste")}
+                      onClick={() => setShowAchievements(true)}
                     >
                       Conquistas
                       <IoTrophySharp className="h-4 w-4" />
@@ -70,7 +72,7 @@ export function Header() {
             <div className="flex gap-4">
               <button
                 className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground"
-                onClick={() => console.log("Teste")}
+                onClick={() => setShowAchievements(true)}
               >
                 Conquistas
                 <IoTrophySharp className="h- w-4" />
@@ -87,6 +89,10 @@ export function Header() {
           </div>
         </div>
       </header>
+      <Achievements
+        open={showAchievements}
+        onClose={() => setShowAchievements(false)}
+      />
     </>
   );
 }
