@@ -69,7 +69,7 @@ export function GameModeComplete({
                 className={`inline-block align-middle min-w-22.5 px-1 border-b-2 -mt-0.5 cursor-pointer whitespace-nowrap
             ${
               selected[index]
-                ? "text-primary bg-primary-light/40 rounded-xl border-none"
+                ? "text-primary bg-primary-light/40 rounded-xl border-none m-1"
                 : "text-transparent border-foreground"
             }
           `}

@@ -58,17 +58,23 @@ export default function Home({
               <div className="flex flex-col gap-4 items-center">
                 <div className="max-w-7xl justify-center items-center w-full flex flex-col">
                   <div className="flex flex-col gap-2 items-center justify-center">
-                    <img
-                      src="./favicon.svg"
-                      alt="Logo"
-                      className="h-8 w-8 mr-2 inline-block"
-                    />
-                    <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">
-                      Study AI
-                    </h1>
+                    <div className="flex gap-2 items-center justify-center">
+                      <img
+                        src="./icon.svg"
+                        alt="Logo"
+                        className="h-10 w-10 mr-2 inline-block"
+                      />
+                      <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">
+                        Study.AI
+                      </h1>
+                    </div>
+
                     <p className="text-foreground mt-4 mb-4">
-                      Potencialize seu aprendizado com o Study AI: nossa
-                      tecnologia transforma conteúdos complexos em um
+                      Potencialize seu aprendizado com o{" "}
+                      <span className="font-semibold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary ">
+                        Study.AI
+                      </span>
+                      : nossa tecnologia transforma conteúdos complexos em um
                       ecossistema de estudo inteligente. Tenha acesso imediato a
                       resumos estruturados, dicas estratégicas de memorização e
                       um modo prático 100% interativo que se adapta ao seu

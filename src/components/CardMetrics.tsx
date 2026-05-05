@@ -14,7 +14,7 @@ export function CardMetrics({
           <span className="text-xs text-shadow-xs text-shadow-primary-light mb-1">
             {title}
           </span>
-          <div className="flex justify-evenly items-center gap-2 ext-shadow-xs text-shadow-primary-light">
+          <div className="flex justify-evenly items-center gap-2 text-shadow-xs text-shadow-primary-light">
             {children}
             <p className="text-md font-semibold text-shadow-xs text-shadow-primary-light">
               {content}

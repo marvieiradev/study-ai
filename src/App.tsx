@@ -7,15 +7,6 @@ import Game from "./pages/Game";
 export default function App() {
   const [studyData, setStudyData] = useState<any>(null);
 
-  const initData = `{
-    "tema": "",
-    "resumo": [],
-    "insights": [],
-    "dicas": [],
-    "exercicios": []
-}`;
-
-  // 🔁 Load from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem("studyai_data");
@@ -25,7 +16,6 @@ export default function App() {
     }
   }, []);
 
-  // 💾 Save to localStorage
   useEffect(() => {
     if (studyData) {
       localStorage.setItem("studyai_data", JSON.stringify(studyData));

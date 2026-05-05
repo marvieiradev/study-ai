@@ -148,7 +148,7 @@ export function GenerateStudy({
                   Ou clique aqui para gerar dados simulados
                 </div>
                 {hasStudy && data.tema && (
-                  <p className="font-semibold text-sm md:text-base mt-2 md:mt-8 mb-2 md:mb-8 text-foreground p-2 rounded-sm bg-error-light/20">
+                  <p className="font-semibold text-sm md:text-base mt-2 md:mt-8 mb-2 md:mb-8 text-error p-2 rounded-sm bg-error-light/20">
                     Já existe um estudo! Gerar um novo estudo, substituirá o
                     estudo atual.
                   </p>
