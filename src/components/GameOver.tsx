@@ -4,6 +4,8 @@ import { IoMdCheckmark, IoMdClose, IoMdTime } from "react-icons/io";
 import { CardMetrics } from "./CardMetrics";
 import { FaStar } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
+import { useEffect, useState } from "react";
+import { CardResults } from "./CardResults";
 
 export function GameOver({
   result,
@@ -18,6 +20,7 @@ export function GameOver({
 }) {
   const hasWon = result ? true : false;
   const navigate = useNavigate();
+  const [endPhrase, setEndPhrase] = useState("");
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -28,27 +31,59 @@ export function GameOver({
     )}`;
   };
 
+  const winPhrases = [
+    "Parabéns! Você é o melhor!",
+    "Excelente desempenho!",
+    "Você é um verdadeiro mestre!",
+  ];
+
+  const losePhrases = [
+    "Não desista! Tente novamente.",
+    "Você pode fazer melhor!",
+    "Continue praticando!",
+  ];
+
+  useEffect(() => {
+    if (hasWon) {
+      setEndPhrase(winPhrases[Math.floor(Math.random() * winPhrases.length)]);
+    } else {
+      setEndPhrase(losePhrases[Math.floor(Math.random() * losePhrases.length)]);
+    }
+  }, [hasWon]);
+
   return (
     <div className="w-full">
       {hasWon ? (
         <div className="flex flex-col gap-6 h-full bg-success-light/15 text-foreground-dark p-6 rounded-xl w-full max-w-3xl mx-auto items-center justify-around">
-          <IoMdCheckmark className="mx-auto mb-4 h-25 w-25 text-success" />
-          <h1 className="text-3xl font-bold text-foreground-dark mb-4">
-            Você Venceu!
-          </h1>
-          <p className="text-lg text-foreground">Obrigado por jogar!</p>
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex justify-center items-center p-4 bg-success rounded-full h-27 w-27">
+              <IoMdCheckmark className="mx-auto h-25 w-25 text-default" />
+            </div>
+            <h1 className="text-3xl font-bold text-foreground-dark mt-8">
+              Você Venceu!
+            </h1>
+          </div>
+          <p className="text-lg text-foreground">{endPhrase}</p>
           <div className="flex gap-2 mt-2 mb-12">
-            <CardMetrics title="XP" content={`${xp}`}>
+            <CardResults title="XP" color="secondary" content={`${xp}`}>
               <FaStar className="h-5 w-5" />
-            </CardMetrics>
+            </CardResults>
 
-            <CardMetrics title="Precisão" content={`${precision}%`}>
+            <CardResults
+              title="Precisão"
+              color="primary"
+              content={`${precision}%`}
+            >
               <TbTargetArrow className="h-5 w-5" />
-            </CardMetrics>
+            </CardResults>
 
-            <CardMetrics title="Tempo" content={formatTime(time)}>
+            <CardResults
+              title="Tempo"
+              color="success"
+              content={formatTime(time)}
+            >
               <IoMdTime className="h-5 w-5" />
-            </CardMetrics>
+            </CardResults>
           </div>
           <GameButton action={() => navigate("/dashboard")} type="neutral">
             Concluir
@@ -56,11 +91,15 @@ export function GameOver({
         </div>
       ) : (
         <div className="flex flex-col gap-6 h-full bg-error-light/15 text-foreground-dark p-6 rounded-xl w-full max-w-3xl mx-auto items-center justify-around">
-          <IoMdClose className="mx-auto mb-4 mt-8 h-25 w-25 text-error" />
-          <h1 className="text-3xl font-bold text-foreground-dark mb-4">
-            Fim de Jogo
-          </h1>
-          <p className="text-lg text-foreground">Obrigado por jogar!</p>
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex justify-center items-center p-4 bg-error rounded-full h-27 w-27">
+              <IoMdClose className="mx-auto h-25 w-25 text-default" />
+            </div>
+            <h1 className="text-3xl font-bold text-foreground-dark mt-8">
+              Fim de Jogo
+            </h1>
+          </div>
+          <p className="text-lg text-foreground">{endPhrase}</p>
           <GameButton action={() => navigate("/dashboard")} type="neutral">
             Sair
           </GameButton>
