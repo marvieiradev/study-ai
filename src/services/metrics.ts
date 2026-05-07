@@ -1,4 +1,6 @@
 const METRICS_KEY = "studyai_metrics";
+let tempWrongs = 0;
+let tempCorrects = 0;
 
 export const defaultMetrics = {
   xp: 0,
@@ -14,6 +16,7 @@ export const defaultMetrics = {
   modeQuiz: 0,
   modeComplete: 0,
   modeRespond: 0,
+  history: [],
 };
 
 export function getMetrics() {
@@ -39,6 +42,7 @@ export function updateAfterAnswer(isCorrect: any, type: string) {
   metrics.totalExercises += 1;
 
   if (isCorrect) {
+    tempCorrects += 1;
     metrics.correctAnswers += 1;
     metrics.xp += 10;
 
@@ -54,6 +58,7 @@ export function updateAfterAnswer(isCorrect: any, type: string) {
         break;
     }
   } else {
+    tempWrongs += 1;
     metrics.wrongAnswers += 1;
     metrics.xp += 5;
   }
@@ -78,6 +83,7 @@ export function finishSession(score: number) {
   if (metrics.lastStudyDate) {
     const last = new Date(metrics.lastStudyDate);
     const now = new Date(today);
+
     // @ts-expect-error
     const diff = (now - last) / (1000 * 60 * 60 * 24);
 
@@ -92,7 +98,24 @@ export function finishSession(score: number) {
 
   metrics.lastStudyDate = today;
 
+  if (!metrics.history) {
+    metrics.history = [];
+  }
+
+  metrics.history.push({
+    date: new Date().toISOString(),
+    corrects: tempCorrects,
+    wrongs: tempWrongs,
+  });
+
+  if (metrics.history.length > 5) {
+    metrics.history.shift();
+  }
+
   saveMetrics(metrics);
+
+  tempCorrects = 0;
+  tempWrongs = 0;
 }
 
 const ACHIEVEMENTS_KEY = "studyai_achievements";

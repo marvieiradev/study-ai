@@ -6,6 +6,9 @@ import { FaRegCalendarAlt, FaTrophy } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { TbTargetArrow } from "react-icons/tb";
 import { ProgressBar } from "./ProgressBar";
+import "chart.js/auto";
+import { ChartDoughnut } from "./ChartDoughnut";
+import { ChartBar } from "./ChartBar";
 
 export default function DashboardMetrics() {
   const [metrics, setMetrics] = useState(getMetrics());
@@ -22,9 +25,15 @@ export default function DashboardMetrics() {
     ? Math.round((metrics.correctAnswers / metrics.totalExercises) * 100)
     : 0;
 
+  const dataChartDoughnut = {
+    modeComplete: metrics.modeComplete,
+    modeQuiz: metrics.modeQuiz,
+    modeRespond: metrics.modeRespond,
+  };
+
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-col md:flex-row justify-around gap-2 w-full">
+    <div className="flex flex-col gap-2 h-118">
+      <div className="flex flex-col md:flex-row justify-around gap-2 w-full h-full md:-mt-2">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="">
             <ProgressBar
@@ -77,7 +86,12 @@ export default function DashboardMetrics() {
             </CardMetrics>
           </div>
         </div>
-        <div className="text-primary">Gráfico em breve</div>
+        <div className="text-primary w-full lg:w-1/2 h-full">
+          <div className="w-full flex flex-col md:flex-row h-30 mt-2 md:-mt-2 items-center justify-around gap-4 md:gap-2">
+            <ChartDoughnut data={dataChartDoughnut} />
+            <ChartBar data={metrics.history} />
+          </div>
+        </div>
       </div>
     </div>
   );
