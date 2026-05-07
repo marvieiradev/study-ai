@@ -5,7 +5,7 @@ export function SemiCircleProgress({
   progress: number;
   text: string;
 }) {
-  const size = 200;
+  const size = 180;
   const strokeWidth = 20;
 
   const radius = (size - strokeWidth) / 2;
@@ -52,7 +52,7 @@ export function SemiCircleProgress({
         />
       </svg>
 
-      <p className="-mt-10 text-foreground font-semibold text-lg">{text}</p>
+      <p className="-mt-8 text-foreground font-semibold text-lg">{text}</p>
     </div>
   );
 }

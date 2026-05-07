@@ -30,7 +30,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
 
   return (
     <>
-      <div className="h-full md:h-screen flex flex-col bg-foreground/5 text-default md:overflow-hidden">
+      <div className="h-full lg:h-screen flex flex-col bg-foreground/5 text-default md:overflow-hidden">
         <Header />
         <div className="w-full mx-auto px-4 mt-3 -mb-1">
           <Card>
@@ -58,9 +58,9 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
           </Card>
         </div>
 
-        <div className="md:flex-1 md:min-h-0 mx-auto w-full p-4">
-          <div className="h-full grid gap-3 grid-cols-1 md:auto-rows-fr md:grid-cols-3 md:grid-rows-3">
-            <div className="md:col-span-1 md:row-span-3">
+        <div className="lg:flex-1 lg:min-h-0 mx-auto w-full p-4">
+          <div className="h-full grid gap-3 grid-cols-1 lg:auto-rows-fr lg:grid-cols-3 lg:grid-rows-3">
+            <div className="lg:col-span-1 lg:row-span-3">
               <Card>
                 <CardHeader>
                   <div className="bg-primary-light/25 p-1 rounded-full">
@@ -84,7 +84,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               </Card>
             </div>
 
-            <div className="md:col-span-2 md:row-span-1">
+            <div className="lg:col-span-2 lg:row-span-1">
               <Card>
                 <CardHeader>
                   <div className="bg-primary-light/25 p-1 rounded-full">
@@ -96,7 +96,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               </Card>
             </div>
 
-            <div className="md:col-span-1 md:row-span-2 md:col-start-2">
+            <div className="lg:col-span-1 lg:row-span-2 lg:col-start-2">
               <Card>
                 <CardHeader>
                   <div className="bg-primary-light/25 p-1 rounded-full">
@@ -115,7 +115,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               </Card>
             </div>
 
-            <div className="md:col-span-1 md:row-span-2 md:col-start-3">
+            <div className="lg:col-span-1 lg:row-span-2 lg:col-start-3">
               <Card>
                 <CardHeader>
                   <div className="bg-primary-light/25 p-1 rounded-full">
