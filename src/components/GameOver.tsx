@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { GameButton } from "./GameButton";
 import { IoMdCheckmark, IoMdClose, IoMdTime } from "react-icons/io";
-import { CardMetrics } from "./CardMetrics";
 import { FaStar } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
 import { useEffect, useState } from "react";
