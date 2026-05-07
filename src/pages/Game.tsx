@@ -55,7 +55,10 @@ export default function Game({ studyData }: { studyData: any }) {
       checkAchievements();
     }
     setShowFeedback(false);
-    if (gameOver) setShowGameOver(true);
+    if (gameOver) {
+      setShowGameOver(true);
+      finishSession(score);
+    }
   }
 
   function handleCorrect() {
@@ -75,6 +78,7 @@ export default function Game({ studyData }: { studyData: any }) {
       setCurrent(0);
       setLives(3);
       setScore(0);
+      finishSession(score);
     }
     updateAfterAnswer(false, exercise.type);
     checkAchievements();
