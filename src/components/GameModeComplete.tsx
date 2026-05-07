@@ -80,7 +80,7 @@ export function GameModeComplete({
           </span>
         ))}
       </h2>
-      <div className="flex gap-2 justify-center w-full flex-wrap mt-2 min-h-12 p-2">
+      <div className="flex gap-2 justify-center w-full flex-wrap mt-2 md:mt-8 min-h-12 p-2">
         {options.map((word, i) => (
           <button
             key={i}
@@ -91,7 +91,7 @@ export function GameModeComplete({
           </button>
         ))}
       </div>
-      <div className="flex gap-2 mt-2 w-full max-w-5xl justify-around">
+      <div className="flex gap-2 mt-2 md:mt-10 w-full max-w-5xl justify-around">
         <GameButton action={reset} type="negative">
           <MdOutlineRefresh className="h-6 w-6" />
           Resetar

@@ -37,7 +37,7 @@ export function GameModeQuiz({
           </button>
         ))}
       </div>
-      <div className="flex justify-center mt-2">
+      <div className="flex justify-center mt-4 md:mt-10">
         <GameButton action={check} type="positive" disabled={!selected}>
           <FaCheck />
           Confirmar
