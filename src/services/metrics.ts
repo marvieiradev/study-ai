@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const METRICS_KEY = "studyai_metrics";
 let tempWrongs = 0;
 let tempCorrects = 0;
@@ -187,5 +189,12 @@ export function checkAchievements() {
     saveAchievements(updated);
   }
 
-  return newOnes; // pode usar pra toast depois
+  const notify = () =>
+    toast.success(
+      newOnes.length > 1
+        ? "Novas conquistas desbloqueadas!"
+        : "Nova conquista desbloqueada!"
+    );
+  notify();
+  return newOnes;
 }
