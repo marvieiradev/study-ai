@@ -12,6 +12,9 @@ import { ChartBar } from "./ChartBar";
 
 export default function DashboardMetrics() {
   const [metrics, setMetrics] = useState(getMetrics());
+  const validBarData = metrics.history && metrics.history.length > 0;
+  const validDoughnutData =
+    metrics.modeComplete + metrics.modeQuiz + metrics.modeRespond > 0;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,7 +35,7 @@ export default function DashboardMetrics() {
   };
 
   return (
-    <div className="flex flex-col gap-2 h-118 md:h-full">
+    <div className="flex flex-col gap-2 h-120 md:h-full">
       <div className="flex flex-col lg:flex-row gap-2 w-full h-full lg:-mt-2">
         <div className="flex flex-col md:flex-row gap-4 justify-between md:justify-center md:mb-12 lg-mb-0 lg:w-1/2">
           <div className="">
@@ -88,8 +91,8 @@ export default function DashboardMetrics() {
         </div>
         <div className="w-full lg:w-1/2 h-full">
           <div className="w-full flex flex-col md:flex-row mt-2 md:-mt-2 items-center justify-center gap-4 md:gap-4">
-            <ChartDoughnut data={dataChartDoughnut} />
-            <ChartBar data={metrics.history} />
+            {validBarData && <ChartBar data={metrics.history} />}
+            {validDoughnutData && <ChartDoughnut data={dataChartDoughnut} />}
           </div>
         </div>
       </div>
