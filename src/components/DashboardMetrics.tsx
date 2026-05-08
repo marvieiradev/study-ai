@@ -91,8 +91,20 @@ export default function DashboardMetrics() {
         </div>
         <div className="w-full lg:w-1/2 h-full">
           <div className="w-full flex flex-col md:flex-row mt-2 md:-mt-2 items-center justify-center gap-4 md:gap-4">
-            {validBarData && <ChartBar data={metrics.history} />}
-            {validDoughnutData && <ChartDoughnut data={dataChartDoughnut} />}
+            {validBarData ? (
+              <ChartBar data={metrics.history} />
+            ) : (
+              <div className="flex w-full h-35 justify-center items-center bg-primary/10 rounded-2xl">
+                <p className="text-lg text-foreground">Sem dados</p>
+              </div>
+            )}
+            {validDoughnutData ? (
+              <ChartDoughnut data={dataChartDoughnut} />
+            ) : (
+              <div className="flex w-full h-35 justify-center items-center bg-primary/10 rounded-2xl">
+                <p className="text-lg text-foreground">Sem dados</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

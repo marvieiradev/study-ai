@@ -34,7 +34,7 @@ export function GenerateStudy({
       setInvisible(true);
       const data = await generateStudyContent(text);
       setStudyData(data);
-      navigate("/");
+      navigate(0);
     } catch (err) {
       showAlertError();
       setInvisible(false);
@@ -55,7 +55,7 @@ export function GenerateStudy({
     );
     setTimeout(() => {
       setStudyData(text);
-      navigate("/");
+      navigate(0);
       setTimeout(() => {
         setShowLoading(false);
       }, 500);

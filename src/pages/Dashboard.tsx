@@ -4,13 +4,18 @@ import DashboardMetrics from "../components/DashboardMetrics";
 import { Header } from "../components/Header";
 import { Button } from "../components/Button";
 import { InsightsCard } from "../components/InsightsCard";
-import { IoDocumentText, IoRocketSharp } from "react-icons/io5";
+import {
+  IoDocumentText,
+  IoRocketSharp,
+  IoSparklesSharp,
+} from "react-icons/io5";
 import { FaBook } from "react-icons/fa6";
 import { GenerateStudy } from "../components/GenerateStudy";
 import { useState } from "react";
 import { FaLightbulb } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
 import { MdInsights } from "react-icons/md";
+import { TbBulbFilled } from "react-icons/tb";
 
 interface StudyData {
   tema: string;
@@ -87,7 +92,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="lg:col-span-2 lg:row-span-1">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary-light/25 p-1 rounded-full">
+                  <div className="bg-primary-light/25 p-1 rounded-full mb-1">
                     <MdInsights className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Métricas</h1>
@@ -96,7 +101,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
               </Card>
             </div>
 
-            <div className="lg:col-span-1 lg:row-span-2 lg:col-start-2">
+            <div className="lg:col-span-1 lg:row-span-2 lg:col-start-2 gap-2">
               <Card>
                 <CardHeader>
                   <div className="bg-primary-light/25 p-1 rounded-full">
@@ -105,9 +110,11 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
                   <h1>Dicas</h1>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-4">
+                  <div className="grid gap-4 mt-1">
                     {studyData?.dicas.map((item, i) => (
-                      <InsightsCard key={i} text={item} />
+                      <InsightsCard key={i} text={item}>
+                        <TbBulbFilled className="h-5 w-5" />
+                      </InsightsCard>
                     ))}
                     {studyData?.dicas.length <= 0 && <p>Sem Dados</p>}
                   </div>
@@ -124,9 +131,11 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
                   <h1>Insights</h1>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-4">
+                  <div className="grid gap-4 mt-1">
                     {studyData?.insights.map((item, i) => (
-                      <InsightsCard key={i} text={item} />
+                      <InsightsCard key={i} text={item}>
+                        <IoSparklesSharp className="h-5 w-5" />
+                      </InsightsCard>
                     ))}
                     {studyData?.insights.length <= 0 && <p>Sem Dados</p>}
                   </div>

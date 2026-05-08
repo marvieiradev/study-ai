@@ -33,13 +33,13 @@ export function Header() {
           <div className="flex md:hidden">
             <div>
               <button
-                className=" bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center py-2 px-4 cursor-pointer hover:text-foreground-dark"
+                className=" text-foreground-light cursor-pointer hover:text-foreground-dark"
                 onClick={handleMenuClick}
               >
                 {menuIsOpen ? (
-                  <AiOutlineClose className="h-4 w-4" />
+                  <AiOutlineClose className="h-6 w-6" />
                 ) : (
-                  <GiHamburgerMenu className="h-4 w-4" />
+                  <GiHamburgerMenu className="h-6 w-6" />
                 )}
               </button>
               {menuIsOpen && (
@@ -47,9 +47,9 @@ export function Header() {
                   className="z-50 absolute bg-foreground-dark/80 flex flex-col mt-2 min-w-full h-screen left-0"
                   onMouseLeave={() => setMenuIsOpen(false)}
                 >
-                  <div className="bg-card-background flex flex-col gap-4 items-center justify-center w-full p-4">
+                  <div className="bg-card-background flex flex-col gap-4 items-center justify-center w-full p-4 text-xl">
                     <button
-                      className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mt-2"
+                      className="bg-default text-foreground-light w-full flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mt-2"
                       onClick={() => setShowAchievements(true)}
                     >
                       Conquistas
@@ -57,7 +57,7 @@ export function Header() {
                     </button>
 
                     <button
-                      className="bg-default text-foreground-light rounded-xl flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mb-2"
+                      className="bg-default text-foreground-light w-full flex gap-2 items-center justify-center p-1 px-4 cursor-pointer hover:text-foreground mb-2"
                       onClick={exit}
                     >
                       Sair
