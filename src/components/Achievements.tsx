@@ -32,11 +32,13 @@ export function Achievements({
               Conquistas
             </h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {achievements.length === 0 && (
-                <p className="text-foreground-light">Nenhuma conquista ainda</p>
-              )}
+            {achievements.length === 0 && (
+              <p className="text-foreground-light mt-8">
+                Nenhuma conquista ainda
+              </p>
+            )}
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {achievements.map((ach: any) => (
                 <div
                   key={ach.id}

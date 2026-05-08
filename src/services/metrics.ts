@@ -162,6 +162,7 @@ export function getAchievements() {
 
 export function saveAchievements(list: any) {
   localStorage.setItem(ACHIEVEMENTS_KEY, JSON.stringify(list));
+  toast.success(`Nova conquista: ${list[list.length - 1].title}`);
 }
 
 export function checkAchievements() {
@@ -188,13 +189,5 @@ export function checkAchievements() {
   if (newOnes.length > 0) {
     saveAchievements(updated);
   }
-
-  const notify = () =>
-    toast.success(
-      newOnes.length > 1
-        ? "Novas conquistas desbloqueadas!"
-        : "Nova conquista desbloqueada!"
-    );
-  notify();
   return newOnes;
 }
