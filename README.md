@@ -213,19 +213,19 @@ src/
  │    ├── ProgressBar
  │    ├── SemiCircleProgress
  │    ├── TextArea
-
  │
  ├── pages/
  │    ├── Home
  │    ├── Dashboard
  │    ├── Game
+ |
+ ├── data/
+ │    ├── estudo.ts
  │
  ├── services/
- │    ├── ai.js
- │
- ├── utils/
- │    ├── storage.js
- │    ├── metrics.js
+ │    ├── gemini.ts
+ │    ├── metrics.ts
+
 ```
 
 ---
