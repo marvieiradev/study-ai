@@ -68,7 +68,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="lg:col-span-1 lg:row-span-3">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary-light/25 p-1 rounded-full">
+                  <div className="bg-primary-light/20 p-1 rounded-full">
                     <IoDocumentText className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Resumo Inteligente</h1>
@@ -92,7 +92,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="lg:col-span-2 lg:row-span-1">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary-light/25 p-1 rounded-full mb-1">
+                  <div className="bg-primary-light/20 p-1 rounded-full mb-1">
                     <MdInsights className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Métricas</h1>
@@ -104,7 +104,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="lg:col-span-1 lg:row-span-2 lg:col-start-2 gap-2">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary-light/25 p-1 rounded-full">
+                  <div className="bg-primary-light/20 p-1 rounded-full">
                     <FaLightbulb className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Dicas</h1>
@@ -125,7 +125,7 @@ export default function Dashboard({ studyData }: { studyData: StudyData }) {
             <div className="lg:col-span-1 lg:row-span-2 lg:col-start-3">
               <Card>
                 <CardHeader>
-                  <div className="bg-primary-light/25 p-1 rounded-full">
+                  <div className="bg-primary-light/20 p-1 rounded-full">
                     <GiBrain className="h-5 w-5 text-primary" />
                   </div>
                   <h1>Insights</h1>

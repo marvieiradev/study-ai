@@ -24,7 +24,7 @@ export function Button({
       ) : (
         <button
           disabled={props.disabled}
-          className={`flex items-center gap-2 mb:gap-4 text-sm px-6 py-2 bg-primary-light/10 border-2 border-secondary rounded-full text-secondary font-medium hover:text-default hover:bg-secondary hover:shadow-sm hover:shadow-secondary-light cursor-pointer ${
+          className={`flex items-center gap-2 mb:gap-4 text-sm px-6 py-2 bg-primary-light/20 border-2 border-secondary rounded-full text-secondary font-medium hover:text-default hover:bg-secondary hover:shadow-sm hover:shadow-secondary-light cursor-pointer ${
             props.disabled ? "opacity-50 cursor-not-allowed" : ""
           }`}
           {...props}

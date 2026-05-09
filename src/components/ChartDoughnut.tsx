@@ -36,7 +36,7 @@ export function ChartDoughnut({ data }: { data: any }) {
         <div className="w-27 h-27 lg:h-25 lg:w-25">
           <Doughnut data={chartData} />
         </div>
-        <div className="flex flex-col bg-primary/15 p-2 rounded-lg text-foreground text-xs justify-center items-start gap-2">
+        <div className="flex flex-col bg-primary/10 p-2 rounded-lg text-foreground text-xs justify-center items-start gap-2">
           <div className="flex gap-2 items-center">
             <span
               className="w-3 h-3 rounded-full inline-block mr-1"

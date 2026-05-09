@@ -42,7 +42,7 @@ export function Achievements({
               {achievements.map((ach: any) => (
                 <div
                   key={ach.id}
-                  className="bg-secondary-light/30 p-3 rounded-xl flex gap-3 items-center"
+                  className="bg-secondary-light/20 p-3 rounded-xl flex gap-3 items-center"
                 >
                   <FaTrophy className="w-10 h-10 text-primary text-shadow-xs text-shadow-primary-light" />
                   <div>
