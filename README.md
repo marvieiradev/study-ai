@@ -180,9 +180,9 @@ O projeto utiliza:
 
 ---
 
-## 🎥 Demonstração
+# 🎥 Demonstração
 
-[![Assistir vídeo](https://img.youtube.com/vi/Uj4__5Uj70A/maxresdefault.jpg)](https://www.youtube.com/watch?v=Uj4__5Uj70A)
+[![Assistir vídeo](../study-ai/src/assets/screenshot.webp)](https://www.youtube.com/watch?v=Uj4__5Uj70A)
 
 ---
 
