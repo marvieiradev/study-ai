@@ -1,62 +1,277 @@
-# 📚 StudyAI
+# 🚀 StudyAI
 
-Um web app inteligente que transforma qualquer conteúdo em material de estudo usando Inteligência Artificial.
+StudyAI é uma plataforma de estudos inteligente com IA que transforma conteúdos em experiências gamificadas de aprendizado.
 
-## 🚀 Sobre o projeto
+O usuário pode colar qualquer texto e a IA automaticamente:
 
-O **StudyAI** permite que o usuário cole um texto (como anotações, aulas ou artigos) e automaticamente gera:
+- identifica o tema
+- gera resumos
+- cria insights
+- fornece dicas de estudo
+- cria exercícios gamificados
 
-- 📄 Resumo organizado
-- 🧠 Flashcards para memorização
-- ❓ Quiz interativo
-- 📊 (Futuramente) análise de desempenho
-
-O objetivo é facilitar o aprendizado ativo e acelerar a absorção de conteúdo.
-
----
-
-## 🛠️ Tecnologias utilizadas
-
-- React (Vite)
-- Tailwind CSS
-- Framer Motion
-- Integração com API de IA (OpenAI ou Gemini)
+Tudo isso dentro de uma interface moderna inspirada em plataformas como Duolingo e dashboards inteligentes.
 
 ---
 
-## ⚙️ Como rodar o projeto
+# ✨ Funcionalidades
 
-```bash
-npm install
-npm run dev
+## 🧠 Geração Inteligente com IA
+
+A aplicação utiliza Google Gemini para:
+
+- analisar conteúdos
+- gerar resumos
+- identificar assuntos principais
+- criar insights automáticos
+- sugerir dicas de aprendizado
+- gerar exercícios dinâmicos
+
+---
+
+# 🎮 Sistema Gamificado
+
+O StudyAI possui um sistema de exercícios inspirado em apps de aprendizado modernos.
+
+## Tipos de exercícios
+
+### ✅ Quiz
+
+Perguntas de múltipla escolha.
+
+Exemplo:
+
+```txt
+Qual é o terceiro planeta do sistema solar?
+A) Mercúrio
+B) Vênus
+C) Terra
+D) Marte
 ```
 
 ---
 
-## 💡 Funcionalidades (MVP)
+### ✍️ Responder
 
-- Input de texto para estudo
-- Geração de resumo
-- Geração de flashcards
-- Geração de quiz
+O usuário precisa digitar uma palavra.
 
----
+Exemplo:
 
-## 🔥 Próximos passos
+```txt
+A ____ é o terceiro planeta do sistema solar.
+```
 
-- Integração completa com IA
-- Sistema de pontuação no quiz
-- Persistência de dados (histórico)
-- Gráficos de desempenho
+Resposta:
 
----
-
-## 🎯 Objetivo no concurso
-
-Criar uma ferramenta prática e inteligente que demonstre o uso real de IA na educação, indo além de um simples chatbot e focando em aprendizado estruturado.
+```txt
+Terra
+```
 
 ---
 
-## 👨‍💻 Autor
+### 🧩 Completar
 
-Marcos Vieira
+O usuário precisa montar a frase na ordem correta.
+
+Exemplo:
+
+```txt
+A ___ é o ___ planeta do sistema ___
+```
+
+Respostas:
+
+```txt
+Terra
+terceiro
+solar
+```
+
+## Recursos do modo completar
+
+- palavras embaralhadas
+- slots visuais interativos
+- clique para adicionar palavras
+- clique no slot para remover palavras
+- comparação por ordem correta
+- reset de tentativa
+
+---
+
+# 📊 Dashboard Inteligente
+
+O dashboard exibe:
+
+- resumo do conteúdo
+- insights gerados pela IA
+- dicas de estudo
+- métricas do usuário
+- conquistas desbloqueadas
+
+---
+
+# 📈 Sistema de Métricas
+
+As métricas funcionam como o perfil permanente do usuário.
+
+Elas permanecem salvas mesmo quando o conteúdo atual é apagado.
+
+## Métricas disponíveis
+
+- XP
+- Nível
+- Precisão (%)
+- Exercícios respondidos
+- Sessões concluídas
+- Melhor pontuação
+- Sequência de dias (streak)
+
+---
+
+# 🏆 Sistema de Conquistas
+
+O app possui conquistas desbloqueáveis.
+
+Exemplos:
+
+- Primeiros Passos
+- Mandando Bem
+- Focado
+- On Fire 🔥
+- Mestre
+
+---
+
+# 💾 Persistência de Dados
+
+A aplicação utiliza LocalStorage para:
+
+- manter métricas
+- salvar progresso
+- armazenar estudos atuais
+- manter conquistas desbloqueadas
+
+---
+
+# 🎨 UI/UX
+
+O projeto utiliza:
+
+- tema light
+- detalhes neon
+- layout responsivo
+- componentes reutilizáveis
+- interface gamificada
+
+---
+
+# 🛠️ Tecnologias
+
+## Frontend
+
+- React
+- Vite
+- TailwindCSS
+- React Router
+
+## IA
+
+- Google Gemini API
+
+---
+
+## 🎥 Demonstração
+
+[![Assistir vídeo](https://img.youtube.com/vi/Uj4__5Uj70A/maxresdefault.jpg)](https://www.youtube.com/watch?v=Uj4__5Uj70A)
+
+---
+
+# 📂 Estrutura do Projeto
+
+```txt
+src/
+ ├── components/
+ │    ├── Achievements
+ │    ├── Alert
+ │    ├── Button
+ │    ├── Card
+ │    ├── CardMetrics
+ │    ├── CardResults
+ │    ├── ChartBar
+ │    ├── ChartDoughnut
+ │    ├── DashboardMetrics
+ │    ├── GameButton
+ │    ├── GameFeedback
+ │    ├── GameModeComplete
+ │    ├── GameModeQuiz
+ │    ├── GameModeRespond
+ │    ├── GameOver
+ │    ├── GenerateStudy
+ │    ├── Header
+ │    ├── InsightsCard
+ │    ├── Loading
+ │    ├── ProgressBar
+ │    ├── SemiCircleProgress
+ │    ├── TextArea
+
+ │
+ ├── pages/
+ │    ├── Home
+ │    ├── Dashboard
+ │    ├── Game
+ │
+ ├── services/
+ │    ├── ai.js
+ │
+ ├── utils/
+ │    ├── storage.js
+ │    ├── metrics.js
+```
+
+---
+
+# ⚡ Fluxo da Aplicação
+
+```txt
+Home
+ ↓
+Gerar estudo com IA
+ ↓
+Dashboard inteligente
+ ↓
+Modo gamificado
+ ↓
+Métricas e conquistas
+```
+
+---
+
+# 🔥 Diferenciais do Projeto
+
+- IA aplicada ao aprendizado
+- Dashboard inteligente
+- Sistema gamificado
+- Métricas persistentes
+- Conquistas desbloqueáveis
+- UX inspirada em apps modernos
+- Exercícios dinâmicos gerados automaticamente
+
+---
+
+# 🚀 Futuras Melhorias
+
+- Upload de PDF
+- Upload de imagens
+- Flashcards inteligentes
+- Ranking online
+- Sistema de login
+- Banco de dados real
+- Sons e animações
+- Modo multiplayer
+- Recomendações personalizadas com IA
+
+---
+
+# 📄 Licença
+
+Projeto desenvolvido para fins educacionais e participação em competição de programação.
