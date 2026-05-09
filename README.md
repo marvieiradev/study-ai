@@ -182,7 +182,7 @@ O projeto utiliza:
 
 # 🎥 Demonstração
 
-[![Assistir vídeo](../study-ai/src/assets/screenshot.webp)](https://www.youtube.com/watch?v=Uj4__5Uj70A)
+[![Assistir vídeo](https://github.com/marvieiradev/study-ai/blob/master/src/assets/screenshot.webp)](https://www.youtube.com/watch?v=Uj4__5Uj70A)
 
 ---
 
