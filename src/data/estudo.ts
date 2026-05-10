@@ -254,8 +254,8 @@ export const estudo = [
       },
       {
         type: "complete",
-        sentence: "História é o estudo e a ___ sistemática do passado humano.",
-        answers: ["documentação", "humano", "investigação"],
+        sentence: "História é o estudo e a ___ sistemática do ___ humano.",
+        answers: ["documentação", "passado"],
       },
       {
         type: "quiz",
@@ -276,8 +276,8 @@ export const estudo = [
       {
         type: "complete",
         sentence:
-          "A história difere do mito porque é apoiada por ___ verificáveis.",
-        answers: ["evidências", "fontes", "interpretações"],
+          "A história difere do ___ porque é apoiada por ___ verificáveis.",
+        answers: ["mito", "evidências"],
       },
       {
         type: "quiz",
@@ -295,8 +295,8 @@ export const estudo = [
       {
         type: "complete",
         sentence:
-          "Os historiadores buscam o conhecimento do passado usando ___ históricas.",
-        answers: ["fontes", "relatos", "marcador"],
+          "Os historiadores buscam o ___ do passado usando ___ históricas.",
+        answers: ["conhecimento", "fontes"],
       },
       {
         type: "quiz",
